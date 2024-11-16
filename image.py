@@ -1,4 +1,3 @@
-from PIL import Image
 from requests import get
 from api import API_KEY
 
