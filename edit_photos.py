@@ -49,6 +49,11 @@ class PhotoEditor:
         )
     
     
+    def edit_photo(self, quote):
+        self.draw_rectangle()
+        self.draw_quote()
+    
+    
     def show_photo(self):
         self.photo.show()
 
@@ -57,6 +62,5 @@ class PhotoEditor:
 photo = Image.open(filename)
 
 photo_editor = PhotoEditor(photo)
-photo_editor.draw_rectangle()
-photo_editor.draw_quote("If the cheetah jumps, so do you.")
+photo_editor.edit_photo("If the cheetah jumps, so do you.")
 photo_editor.show_photo()
