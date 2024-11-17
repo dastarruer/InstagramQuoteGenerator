@@ -33,6 +33,7 @@ class ImageGenerator:
         response = get("https://api.pexels.com/v1/search", headers=headers, params=params).json()
         return response
     
+
     def get_pexels_image(self, num_of_photos: int):
         """
         Save a Pexels image using its URL. This URL is fetched from request_pexels_api().
@@ -52,4 +53,6 @@ class ImageGenerator:
             f.write(photo.content)
         print("Done!")
 
+
 image_generator = ImageGenerator()
+image_generator.get_pexels_image(1)
