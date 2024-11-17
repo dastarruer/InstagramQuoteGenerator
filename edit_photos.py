@@ -11,6 +11,9 @@ class PhotoEditor:
         
     
     def draw_rectangle(self):
+        """
+        Draw a semi-transparent rectangle over the photo, similar to how quotes are displayed on Instagram. This effect mimics the style where stock photos are paired with a transparent rectangle, and text is written on top of it for better readability.
+        """
         x_offset = 50
         y_offset = 100 
 
