@@ -4,7 +4,7 @@ from random import choice
 from requests import get
 
 class ImageGenerator:
-    def request_pexels_api(self):
+    def request_pexels_api(self, num_of_photos: int):
         """
         Requests a random photo from the Pexels API.
         """
@@ -24,7 +24,7 @@ class ImageGenerator:
         params = {
             "query": chosen_category,
             "orientation": "landscape",
-            "per_page": 1
+            "per_page": num_of_photos
         }
 
         print(f"Searching for '{params["query"]}'...")
@@ -33,12 +33,12 @@ class ImageGenerator:
         response = get("https://api.pexels.com/v1/search", headers=headers, params=params).json()
         return response
     
-    def get_pexels_image(self):
+    def get_pexels_image(self, num_of_photos: int):
         """
         Save a Pexels image using its URL. This URL is fetched from request_pexels_api().
         """
         # Get a photo from the Pexels API
-        photo = self.request_pexels_api()
+        photo = self.request_pexels_api(num_of_photos)
 
         # Get the URL of the photo
         photo_url = photo["photos"][0]["src"]["original"]
