@@ -31,6 +31,7 @@ class ImageGenerator:
 
         # Get the JSON response from the API
         response = get("https://api.pexels.com/v1/search", headers=headers, params=params).json()
+        print(f"Width: {response["photos"][0]["width"]} Height: {response["photos"][0]["height"]}")
         return response
     
 
