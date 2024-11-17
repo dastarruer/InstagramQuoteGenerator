@@ -12,17 +12,17 @@ class PhotoEditor:
         x_offset = 50
         y_offset = 100 
         
-        self.x0 = x_offset
-        self.x1 = self.width - x_offset
-        self.y0 = y_offset
-        self.y1 = self.height - y_offset
+        self.rectangle_x0 = x_offset
+        self.rectanlge_x1 = self.width - x_offset
+        self.rectangle_y0 = y_offset
+        self.rectangle_y1 = self.height - y_offset
         
     
     def draw_rectangle(self):
         """
         Draw a semi-transparent rectangle over the photo, similar to how quotes are displayed on Instagram. This effect mimics the style where stock photos are paired with a transparent rectangle, and text is written on top of it for better readability.
         """
-        xy = (self.x0, self.y0, self.x1, self.y1)
+        xy = (self.rectangle_x0, self.rectangle_y0, self.rectanlge_x1, self.rectangle_y1)
         transparency = 200
 
         self.draw.rectangle(
@@ -37,8 +37,8 @@ class PhotoEditor:
         font = ImageFont.truetype("fonts/georgiaz.ttf", font_size)
         text_width = font.getlength(quote)
 
-        x_center = (self.x1 - self.x0 - text_width) // 2
-        y_center = (self.y1 - self.y0) // 2
+        x_center = (self.rectanlge_x1 - self.rectangle_x0 - text_width) // 2
+        y_center = (self.rectangle_y1 - self.rectangle_y0) // 2
         position_center = (x_center, y_center)
 
         self.draw.text(
