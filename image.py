@@ -5,7 +5,10 @@ headers = {
     "Authorization": API_KEY
 }
 
-photo = get("https://api.pexels.com/v1/curated?page=1&per_page=1", headers=headers).json() 
+api_query = "https://api.pexels.com/v1/search?query=abstract&orientation=landscape&per_page=1"
+
+photo = get(api_query, headers=headers).json() 
+
 photo_url = photo["photos"][0]["src"]["original"]
 photo = get(photo_url)
 
