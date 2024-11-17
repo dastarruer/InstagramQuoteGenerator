@@ -27,11 +27,13 @@ class ImageGenerator:
             "per_page": 1
         }
 
+        print(f"Searching for '{params["query"]}'...")
+
         # Get the JSON response from the API
         response = get("https://api.pexels.com/v1/search", headers=headers, params=params).json()
         return response
     
-    def save_pexels_image(self):
+    def get_pexels_image(self):
         """
         Save a Pexels image using its URL. This URL is fetched from request_pexels_api().
         """
