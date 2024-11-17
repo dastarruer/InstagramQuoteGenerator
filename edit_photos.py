@@ -6,11 +6,11 @@ filename = "image.JPEG"
 # Open photo
 photo = Image.open(filename)
 
-draw = ImageDraw.Draw(photo)
+draw = ImageDraw.Draw(photo, "RGBA")
 
 # Placeholder values until I can dynamically obtain the width and height of the image
-width = 4845
-height = 3484
+width = 6000
+height = 4000
 
 x_offset = 50
 y_offset = 100 
@@ -19,11 +19,12 @@ x0 = x_offset
 x1 = width - x_offset
 y0 = y_offset
 y1 = height - y_offset
-xy = (x0, y0, x1, y1)
 
+xy = (x0, y0, x1, y1)
+transparency = 150
 draw.rectangle(
     xy = xy, 
-    fill = (255, 255, 255, 50), 
+    fill = (255, 255, 255, transparency), 
     outline = (255, 255, 255), 
 )
 
