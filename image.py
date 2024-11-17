@@ -18,10 +18,10 @@ chosen_category = choice(categories)
 
 print(f"Searching for '{chosen_category}'...")
 
-api_query = f"https://api.pexels.com/v1/search?query={chosen_category}&orientation={orientation}&per_page={num_of_photos}"
+api_request = f"https://api.pexels.com/v1/search?query={chosen_category}&orientation={orientation}&per_page={num_of_photos}"
 
 # Get the JSON response from the API
-photo = get(api_query, headers=headers).json() 
+photo = get(api_request, headers=headers).json() 
 
 # Get the URL of the photo
 photo_url = photo["photos"][0]["src"]["original"]
