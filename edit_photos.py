@@ -28,6 +28,14 @@ class PhotoEditor:
         self.rectangle_x1 = self.width - rectangle_x_offset
         self.rectangle_y0 = rectangle_y_offset
         self.rectangle_y1 = self.height - rectangle_y_offset
+    
+    
+    def get_center_coordinates(self, bbox_width, bbox_height):
+        center_x = (bbox_width - self.width) // 2
+        center_y = (bbox_height - self.height) // 2
+        
+        center = (center_x, center_y)
+        return center
         
     
     def draw_rectangle(self):
