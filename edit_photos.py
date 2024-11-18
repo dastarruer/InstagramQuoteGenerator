@@ -63,7 +63,7 @@ class PhotoEditor:
         Execute both 'draw_rectangle()' and 'draw_quote()'.
         """
         self.draw_rectangle()
-        self.draw_quote()
+        self.draw_quote(quote)
     
     
     def show_photo(self):
@@ -77,5 +77,5 @@ class PhotoEditor:
 photo = Image.open(filename)
 
 photo_editor = PhotoEditor(photo)
-photo_editor.edit_photo("If the cheetah jumps, so do you.")
+photo_editor.edit_photo("Neque porro quisquam est...")
 photo_editor.show_photo()
