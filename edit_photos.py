@@ -41,14 +41,19 @@ class PhotoEditor:
         font = ImageFont.truetype("fonts/georgiaz.ttf", font_size)
         text_width = font.getlength(quote)
         
-        x_center = (self.rectangle_x1 - self.rectangle_x0 - text_width) // 2
-        y_center = (self.rectangle_y1 - self.rectangle_y0) // 2
-        position_center = (x_center, y_center)
+        rectangle_width = self.rectangle_x1 - self.rectangle_x0
+        rectangle_height = self.rectangle_y1 - self.rectangle_y0
+              
+        # The coordinates of the quote (which is placed in the center)  
+        x = (rectangle_width - text_width) // 2
+        y = (rectangle_height) // 2
+        xy = (x, y)
 
+        fill = (0, 0, 0)
         self.draw.text(
-            position_center,
+            xy,
             quote,
-            fill=(0, 0, 0),
+            fill=fill,
             font=font
         )
     
