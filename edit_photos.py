@@ -63,7 +63,8 @@ class PhotoEditor:
         quotee_xy = (quotee_x, quotee_y)
 
         quote_fill = (0, 0, 0)
-        quotee_fill = (117, 128, 129)
+        quotee_transparency = 150
+        quotee_fill = (117, 128, 129, quotee_transparency)
         self.draw.text(
             quote_xy,
             quote,
