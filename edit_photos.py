@@ -33,9 +33,9 @@ class PhotoEditor:
         )
         
     
-    def draw_quote(self, quote):
+    def draw_quote(self, quote,):
         """
-        Draw the quote on top of the photo. It is centered on top of the transparent rectangle that can be drawn with 'draw_rectangle()'.
+        Draw the quote on top of the photo. It is centered in relation to the transparent rectangle that can be drawn with 'draw_rectangle()'.
         """
         font_size = 300
         font = ImageFont.truetype("fonts/georgiaz.ttf", font_size)
@@ -45,15 +45,15 @@ class PhotoEditor:
         rectangle_height = self.rectangle_y1 - self.rectangle_y0
               
         # The coordinates of the quote (which is placed in the center)  
-        x = (rectangle_width - text_width) // 2
-        y = (rectangle_height) // 2
-        xy = (x, y)
+        quote_x = (rectangle_width - text_width) // 2
+        quote_y = (rectangle_height) // 2
+        quote_xy = (quote_x, quote_y)
 
-        fill = (0, 0, 0)
+        quote_fill = (0, 0, 0)
         self.draw.text(
-            xy,
+            quote_xy,
             quote,
-            fill=fill,
+            fill=quote_fill,
             font=font
         )
     
