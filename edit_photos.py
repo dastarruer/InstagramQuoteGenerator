@@ -9,13 +9,14 @@ class PhotoEditor:
         self.width, self.height = photo.size
         self.draw = ImageDraw.Draw(photo, "RGBA")
         
-        x_offset = 50
-        y_offset = 100 
         
-        self.rectangle_x0 = x_offset
-        self.rectanlge_x1 = self.width - x_offset
-        self.rectangle_y0 = y_offset
-        self.rectangle_y1 = self.height - y_offset
+        rectangle_x_offset = 50
+        rectangle_y_offset = 100 
+        
+        self.rectangle_x0 = rectangle_x_offset
+        self.rectanlge_x1 = self.width - rectangle_x_offset
+        self.rectangle_y0 = rectangle_y_offset
+        self.rectangle_y1 = self.height - rectangle_y_offset
         
     
     def draw_rectangle(self):
