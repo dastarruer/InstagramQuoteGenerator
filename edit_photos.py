@@ -40,8 +40,8 @@ class PhotoEditor:
         font_size = 300
         font = ImageFont.truetype("fonts/georgiaz.ttf", font_size)
         quote_bbox = font.getbbox(quote)
-        quote_width = quote_bbox[0] - quote_bbox[2]
-        quote_height = quote_bbox[1] - quote_bbox[3]
+        quote_width = abs(quote_bbox[0] - quote_bbox[2])
+        quote_height = abs(quote_bbox[1] - quote_bbox[3])
 
         rectangle_width = self.rectangle_x1 - self.rectangle_x0
         rectangle_height = self.rectangle_y1 - self.rectangle_y0
