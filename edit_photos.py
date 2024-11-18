@@ -20,7 +20,7 @@ class Text:
         center_x = (bbox_width - self.width) // 2
         center_y = (bbox_height - self.height) // 2
         
-        center = (center_x, center_y)
+        center = [center_x, center_y]
         return center
 
 
@@ -64,18 +64,18 @@ class PhotoEditor:
         quote_font_size = 300
         quote_font = ImageFont.truetype("fonts/georgia.ttf", quote_font_size)
         quote_text = Text(quote, quote_font)
-              
-        quote_x = (rectangle_width - quote_text.width) // 2
-        quote_y = (rectangle_height - quote_text.height) // 2
-        quote_xy = quote_text.
+        
+        quote_xy = quote_text.get_center_coordinates(rectangle_width, rectangle_height)
         
         quotee_font_size = 250
         quotee_font = ImageFont.truetype("fonts/georgiai.ttf", quotee_font_size)
         quotee_text = Text(quotee, quotee_font)
 
-        quotee_x = (rectangle_width - quotee_text.width) // 2
-        quotee_y = (quote_y + quote_text.height / 2) + quotee_text.height
-        quotee_xy = (quotee_x, quotee_y)
+        quotee_xy = quotee_text.get_center_coordinates(rectangle_width, rectangle_height)
+        
+        # Offset the quotee's y position by the quote's height and a bit of padding
+        padding = 10
+        quotee_xy[1] += quote_text.height + padding
 
         quote_fill = (0, 0, 0)
         quotee_transparency = 150
