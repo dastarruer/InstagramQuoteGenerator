@@ -23,6 +23,18 @@ class Text:
         center = [center_x, center_y]
         return center
 
+    
+    def draw_text(self, draw, fill, xy):
+        """
+        Draw the text on top the photo.
+        """
+        draw.text(
+            xy,
+            self.text,
+            fill=fill,
+            font=self.font
+        )
+
 
 class PhotoEditor:
     def __init__(self, photo: Image):
@@ -67,6 +79,9 @@ class PhotoEditor:
         
         quote_xy = quote_text.get_center_coordinates(rectangle_width, rectangle_height)
         
+        quote_fill = (0, 0, 0)
+        quote_text.draw_text(self.draw, quote_fill, quote_xy)
+        
         quotee_font_size = 250
         quotee_font = ImageFont.truetype("fonts/georgiai.ttf", quotee_font_size)
         quotee_text = Text(quotee, quotee_font)
@@ -77,22 +92,9 @@ class PhotoEditor:
         padding = 10
         quotee_xy[1] += quote_text.height + padding
 
-        quote_fill = (0, 0, 0)
         quotee_transparency = 150
         quotee_fill = (117, 128, 129, quotee_transparency)
-        self.draw.text(
-            quote_xy,
-            quote,
-            fill=quote_fill,
-            font=quote_font
-        )
-        
-        self.draw.text(
-            quotee_xy,
-            quotee,
-            fill=quotee_fill,
-            font=quotee_font
-        )
+        quotee_text.draw_text(self.draw, quotee_fill, quotee_xy)
     
     
     def edit_photo(self, quote, quotee):
