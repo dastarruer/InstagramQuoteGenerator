@@ -3,6 +3,16 @@ from PIL import Image, ImageFont, ImageDraw
 
 filename = "image.JPEG"
 
+class Text:
+    def __init__(self, text, font):
+        self.text = text
+        self.font = font
+        
+        bbox = self.font.getbbox(text)
+        self.width = abs(bbox[0] - bbox[2])
+        self.height = abs(bbox[1] - bbox[3])
+
+
 class PhotoEditor:
     def __init__(self, photo):
         self.photo = photo
