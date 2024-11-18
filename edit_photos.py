@@ -41,7 +41,7 @@ class PhotoEditor:
         rectangle_height = self.rectangle_y1 - self.rectangle_y0
         
         quote_font_size = 300
-        quote_font = ImageFont.truetype("fonts/georgiaz.ttf", quote_font_size)
+        quote_font = ImageFont.truetype("fonts/georgia.ttf", quote_font_size)
         
         quote_bbox = quote_font.getbbox(quote)
         quote_width = abs(quote_bbox[0] - quote_bbox[2])
@@ -52,7 +52,7 @@ class PhotoEditor:
         quote_xy = (quote_x, quote_y)
         
         quotee_font_size = 250
-        quotee_font = ImageFont.truetype("fonts/georgiaz.ttf", quotee_font_size)
+        quotee_font = ImageFont.truetype("fonts/georgiai.ttf", quotee_font_size)
         
         quotee_bbox = quotee_font.getbbox(quotee)
         quotee_width = abs(quotee_bbox[0] - quotee_bbox[2])
@@ -63,7 +63,7 @@ class PhotoEditor:
         quotee_xy = (quotee_x, quotee_y)
 
         quote_fill = (0, 0, 0)
-        quotee_fill = (0, 0, 0)
+        quotee_fill = (117, 128, 129)
         self.draw.text(
             quote_xy,
             quote,
@@ -75,7 +75,7 @@ class PhotoEditor:
             quotee_xy,
             quotee,
             fill=quotee_fill,
-            font=quote_font
+            font=quotee_font
         )
     
     
