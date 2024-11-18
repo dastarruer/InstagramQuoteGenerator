@@ -11,6 +11,17 @@ class Text:
         bbox = self.font.getbbox(text)
         self.width = abs(bbox[0] - bbox[2])
         self.height = abs(bbox[1] - bbox[3])
+    
+        
+    def get_center_coordinates(self, bbox_width, bbox_height):
+        """
+        Get the coordinates that would center the text in a given bounding box.
+        """
+        center_x = (bbox_width - self.width) // 2
+        center_y = (bbox_height - self.height) // 2
+        
+        center = (center_x, center_y)
+        return center
 
 
 class PhotoEditor:
@@ -28,14 +39,6 @@ class PhotoEditor:
         self.rectangle_x1 = self.width - rectangle_x_offset
         self.rectangle_y0 = rectangle_y_offset
         self.rectangle_y1 = self.height - rectangle_y_offset
-    
-    
-    def get_center_coordinates(self, bbox_width, bbox_height):
-        center_x = (bbox_width - self.width) // 2
-        center_y = (bbox_height - self.height) // 2
-        
-        center = (center_x, center_y)
-        return center
         
     
     def draw_rectangle(self):
@@ -64,7 +67,7 @@ class PhotoEditor:
               
         quote_x = (rectangle_width - quote_text.width) // 2
         quote_y = (rectangle_height - quote_text.height) // 2
-        quote_xy = (quote_x, quote_y)
+        quote_xy = quote_text.
         
         quotee_font_size = 250
         quotee_font = ImageFont.truetype("fonts/georgiai.ttf", quotee_font_size)
