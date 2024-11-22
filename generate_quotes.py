@@ -6,7 +6,7 @@ from requests import get, codes
 class QuoteGenerator:
     def __init__(self):
         self.category = 'happiness'
-        self.api_url = f'https://api.api-ninjas.com/v1/quotes?category={category}'
+        self.api_url = f'https://api.api-ninjas.com/v1/quotes?category={self.category}'
         
 headers = {
     'X-Api-Key':API_NINJAS_KEY
