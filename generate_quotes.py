@@ -6,7 +6,7 @@ from requests import get, codes
 class QuoteGenerator:
     def generate_quote(self, category):
         """
-        Generate a quote using the API Ninjas Quotes API
+        Generate a quote using the API Ninjas Quotes API.
         """
         headers = {
             'X-Api-Key':API_NINJAS_KEY
