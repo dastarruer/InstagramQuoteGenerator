@@ -4,16 +4,13 @@ from requests import get, codes
 
 
 class QuoteGenerator:
-    def __init__(self):
-        self.category = 'happiness'
-        self.api_url = f'https://api.api-ninjas.com/v1/quotes?category={self.category}'
-        
-headers = {
-    'X-Api-Key':API_NINJAS_KEY
-}
+    def generate_quote(self, category):
+        headers = {
+            'X-Api-Key':API_NINJAS_KEY
+        }
+        api_url = f'https://api.api-ninjas.com/v1/quotes?category={category}'
 
-r = get(api_url, headers=headers)
-if r.status_code == codes.ok:
-    print(r.json())
-else:
-    print(r.status_code)
+        r = get(api_url, headers=headers)
+        if r.status_code == codes.ok:
+            r = r.json()
+            return (r[0]["quote"], r[0]["author"])
