@@ -21,4 +21,3 @@ class QuoteGenerator:
         
         
 q = QuoteGenerator()
-print(q.generate_quote("anger"))
