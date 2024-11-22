@@ -3,8 +3,11 @@ from api import API_NINJAS_KEY
 from requests import get, codes
 
 
-category = 'happiness'
-api_url = f'https://api.api-ninjas.com/v1/quotes?category={category}'
+class QuoteGenerator:
+    def __init__(self):
+        self.category = 'happiness'
+        self.api_url = f'https://api.api-ninjas.com/v1/quotes?category={category}'
+        
 headers = {
     'X-Api-Key':API_NINJAS_KEY
 }
