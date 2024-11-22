@@ -3,7 +3,7 @@ from api import API_KEY
 from random import choice
 from requests import get
 
-class ImageGenerator:
+class PhotoGenerator:
     def request_pexels_api(self, num_of_photos: int):
         """
         Requests a random photo from the Pexels API.
