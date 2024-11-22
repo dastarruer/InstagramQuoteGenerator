@@ -20,4 +20,4 @@ class QuoteGenerator:
         print(f"Something went wrong... ({quote.status_code})")
         
         
-q = QuoteGenerator()
+quote_generator = QuoteGenerator()
