@@ -14,3 +14,6 @@ class QuoteGenerator:
         if r.status_code == codes.ok:
             r = r.json()
             return (r[0]["quote"], r[0]["author"])
+        print(r.status_code)
+q = QuoteGenerator()
+print(q.generate_quote("anger"))
