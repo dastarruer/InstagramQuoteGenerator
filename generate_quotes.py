@@ -4,7 +4,7 @@ from requests import get, codes
 
 
 category = 'happiness'
-api_url = f'https://api.api-ninjas.com/v1/quotes?category={API_NINJAS_KEY}'
+api_url = f'https://api.api-ninjas.com/v1/quotes?category={category}'
 headers = {
     'X-Api-Key':API_NINJAS_KEY
 }
