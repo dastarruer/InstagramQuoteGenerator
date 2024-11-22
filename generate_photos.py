@@ -1,4 +1,4 @@
-from api import API_KEY
+from api import PEXELS_KEY
 
 from random import choice
 from requests import get
@@ -11,7 +11,7 @@ class PhotoGenerator:
 
         # This header is used to send our API key to the API for verification
         headers = {
-            "Authorization": API_KEY
+            "Authorization": PEXELS_KEY
         }
 
         # The parameters that will be sent to the API
