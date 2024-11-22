@@ -5,6 +5,9 @@ from requests import get, codes
 
 class QuoteGenerator:
     def generate_quote(self, category):
+        """
+        Generate a quote using the API Ninjas Quotes API
+        """
         headers = {
             'X-Api-Key':API_NINJAS_KEY
         }
@@ -14,6 +17,8 @@ class QuoteGenerator:
         if r.status_code == codes.ok:
             r = r.json()
             return (r[0]["quote"], r[0]["author"])
-        print(r.status_code)
+        print(f"Something went wrong... ({r.status_code})")
+        
+        
 q = QuoteGenerator()
 print(q.generate_quote("anger"))
