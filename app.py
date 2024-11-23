@@ -27,6 +27,7 @@ def generate_photo(filename):
 
 @app.route('/')
 def index():
+    # The filename the finished photo will be saved to
     filename = "static/image.JPEG"
     generate_photo(filename)    
     return render_template("index.html")
