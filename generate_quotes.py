@@ -4,9 +4,9 @@ from requests import get, codes
 
 
 class QuoteGenerator:
-    def generate_quote(self, category):
+    def generate_quote(self, category) -> tuple[str, str]:
         """
-        Generate a quote using the API Ninjas Quotes API.
+        Returns a tuple with a random quote and its respective quotee.
         """
         headers = {
             'X-Api-Key':API_NINJAS_KEY
