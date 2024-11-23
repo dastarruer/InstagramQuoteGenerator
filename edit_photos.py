@@ -18,12 +18,14 @@ class Text:
         current_line = Text("", self.font)
         words = self.text.split(" ")
         
+        # TODO: Figure out how to update Text class self.width/height every time self.text is updated
         for word in words:
             word = Text(word, self.font)
             if word.width + current_line.width >= max_width:
                 lines.append(current_line)
-                current_line.text = " "
-            current_line.text += word.text
+                current_line.text = ""
+            else:
+                current_line.text += word.text + " "
         print(lines)
         return lines
     
