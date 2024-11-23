@@ -6,7 +6,7 @@ from requests import get, codes
 class QuoteGenerator:
     def generate_quote(self, category) -> tuple[str, str]:
         """
-        Returns a tuple with a random quote and its respective quotee.
+        Returns a tuple with a random quote and its respective author.
         """
         headers = {
             'X-Api-Key':API_NINJAS_KEY
