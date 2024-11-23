@@ -14,6 +14,12 @@ class Text:
     
     
     def wrap_text(self, max_width):
+        lines = []
+        current_line = Text("", self.font)
+        words = self.text.split(" ")
+        
+        for word in words:
+            pass
         return None
     
         
@@ -116,4 +122,4 @@ class PhotoEditor:
         self.save_photo(file)
 
 p = PhotoEditor(filename)
-p.edit_photo("hi hd  dfa lk afsdlk jaslkdf jasdklf ajls kfdasjdlfk asdfjalks fa", "afslkjd", filename)
+p.edit_photo("Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is living with the results of other people's thinking.", "Steve Jobs", filename)
