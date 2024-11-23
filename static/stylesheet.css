@@ -2,3 +2,11 @@
     width: 400px;
     height: auto;
 }
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    margin: 0; 
+}
