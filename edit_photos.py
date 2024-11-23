@@ -94,22 +94,19 @@ class PhotoEditor:
         quotee_text.draw(self.draw, quotee_xy, quotee_fill)
     
     
-    def edit_photo(self, quote, quotee):
+    def save_photo(self, file):
         """
-        Execute both 'draw_rectangle()' and 'draw_quote()'.
+        Save the photo.
+        """
+        self.photo.save(file)
+    
+    
+    def edit_photo(self, quote, quotee, file):
+        """
+        Execute both 'draw_rectangle()' and 'draw_quote()', and save the Image to 'file'.
         """
         self.draw_rectangle()
         self.draw_quote(quote, quotee)
+        self.save_photo(file)
     
     
-    def show_photo(self):
-        """
-        Show the photo.
-        """
-        self.photo.show()
-
-
-# Open photo
-photo = Image.open(filename)
-
-photo_editor = PhotoEditor(photo)
