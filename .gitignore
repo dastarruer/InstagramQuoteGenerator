@@ -1,4 +1,4 @@
 __pycache__/
-venv/
+.venv/
 api.py
 image.JPEG

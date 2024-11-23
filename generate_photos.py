@@ -49,9 +49,10 @@ class PhotoGenerator:
         photo = get(photo_url)
 
         # Save the image
-        filename = "image.JPEG"
+        filename = "static/image.JPEG"
         with open(filename, 'wb') as f:
             f.write(photo.content)
         print("Done!")
 
 image_generator = PhotoGenerator()
+image_generator.get_pexels_image(1)
