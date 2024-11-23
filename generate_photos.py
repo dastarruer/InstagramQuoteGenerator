@@ -35,7 +35,7 @@ class PhotoGenerator:
         return response
     
 
-    def get_pexels_image(self, num_of_photos: int):
+    def save_pexels_image(self, num_of_photos: int):
         """
         Save a Pexels image using its URL. This URL is fetched from request_pexels_api().
         """
