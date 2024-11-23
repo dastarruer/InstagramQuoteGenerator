@@ -113,5 +113,3 @@ class PhotoEditor:
 photo = Image.open(filename)
 
 photo_editor = PhotoEditor(photo)
-photo_editor.edit_photo("Neque porro quisquam est...", "Me")
-photo_editor.show_photo()

@@ -54,5 +54,4 @@ class PhotoGenerator:
             f.write(photo.content)
         print("Done!")
 
-image_generator = PhotoGenerator()
-image_generator.get_pexels_image(1)
+photo_generator = PhotoGenerator()
