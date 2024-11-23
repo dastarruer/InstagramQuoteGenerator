@@ -19,8 +19,13 @@ class Text:
         words = self.text.split(" ")
         
         for word in words:
-            pass
-        return None
+            word = Text(word, self.font)
+            if word.width + current_line.width >= max_width:
+                lines.append(current_line)
+                current_line.text = " "
+            current_line.text += word.text
+        print(lines)
+        return lines
     
         
     def get_center_coordinates(self, bbox_width, bbox_height):
@@ -85,6 +90,8 @@ class PhotoEditor:
         quote_text = Text(quote, quote_font)
         
         wrapped_quote_text = quote_text.wrap_text(rectangle_width)
+        for i in wrapped_quote_text:
+            print(i.text)
         
         quote_xy = quote_text.get_center_coordinates(rectangle_width, rectangle_height)
         
