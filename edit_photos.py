@@ -1,7 +1,7 @@
 from PIL import Image, ImageFont, ImageDraw
 
 
-filename = "image.JPEG"
+filename = "static/image.JPEG"
 
 class Text:
     def __init__(self, text: str, font: ImageFont):
@@ -11,6 +11,10 @@ class Text:
         bbox = self.font.getbbox(text)
         self.width = abs(bbox[0] - bbox[2])
         self.height = abs(bbox[1] - bbox[3])
+    
+    
+    def wrap_text(self, max_width):
+        return None
     
         
     def get_center_coordinates(self, bbox_width, bbox_height):
@@ -74,6 +78,8 @@ class PhotoEditor:
         quote_font = ImageFont.truetype("fonts/georgia.ttf", quote_font_size)
         quote_text = Text(quote, quote_font)
         
+        wrapped_quote_text = quote_text.wrap_text(rectangle_width)
+        
         quote_xy = quote_text.get_center_coordinates(rectangle_width, rectangle_height)
         
         quote_fill = (0, 0, 0)
@@ -108,5 +114,6 @@ class PhotoEditor:
         self.draw_rectangle()
         self.draw_quote(quote, quotee)
         self.save_photo(file)
-    
-    
+
+p = PhotoEditor(filename)
+p.edit_photo("hi hd  dfa lk afsdlk jaslkdf jasdklf ajls kfdasjdlfk asdfjalks fa", "afslkjd", filename)
