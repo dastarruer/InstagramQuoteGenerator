@@ -34,10 +34,10 @@ class Text:
 
 
 class PhotoEditor:
-    def __init__(self, photo: Image):
-        self.photo = photo
-        self.width, self.height = photo.size
-        self.draw = ImageDraw.Draw(photo, "RGBA")
+    def __init__(self, filename):
+        self.photo = Image.open(filename)
+        self.width, self.height = self.photo.size
+        self.draw = ImageDraw.Draw(self.photo, "RGBA")
         
         # This is the offset of the rectangle that is drawn over the photo for better readability
         rectangle_x_offset = 50

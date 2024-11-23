@@ -17,13 +17,12 @@ def generate_photo(filename):
     author = random_quote[1]
     photo_generator.get_pexels_image("1")
     
-    img = Image.open(filename)
-    photo_editor = PhotoEditor(img)
+    photo_editor = PhotoEditor(filename)
     photo_editor.edit_photo(quote, author, filename)
 
 
 @app.route('/')
 def index():
     filename = "static/image.JPEG"
-    create_photo(filename)    
+    generate_photo(filename)    
     return render_template("index.html")
