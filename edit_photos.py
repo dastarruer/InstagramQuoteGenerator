@@ -20,7 +20,21 @@ class Text:
         height = abs(bbox[1] - bbox[3])
         return height
     
-    def wrap_text(self, max_width):
+    def wrap_text(self, max_width: int):
+        """
+        Wrap the text to fit within the specified maximum width.
+
+        This method breaks the input text into multiple lines, ensuring that each line's width 
+        does not exceed the given `max_width`. Words are added to the current line until adding
+        another word would exceed the width limit, at which point the word is moved to a new line.
+
+        Args:
+            max_width (int): The maximum width (in pixels) that a single line of text can occupy.
+
+        Returns:
+            list[Text]: A list of `Text` objects representing the wrapped lines of text. Each `Text` object contains a portion of the original text, and the list is reversed to display the 
+                first lines at the top.
+        """
         lines = []
         words = self.text.split(" ")
         
@@ -28,7 +42,8 @@ class Text:
         current_line = Text("", self.font)
         
         for word in words:
-            # Store the current word as a Text object, adding a trailing space. Without the trailing space, the line 'Who am I?' would instead become 'WhoamI?'
+            # Store the current word as a Text object, adding a trailing space
+            # Without the trailing space, the line 'Who am I?' would instead become 'WhoamI?'
             word = Text(word + " ", self.font)
             if word.width + current_line.width >= max_width:
                 # If 'line' was set to 'current_line', any changes made to 'current_line' would also be applied to 'line'. 
@@ -36,7 +51,7 @@ class Text:
                 line = Text(current_line.text, self.font)
                 lines.append(line)
                 
-                # Set 'current_line' to 'word.text' instead of an empty string because otherwise the current word would be skipped
+                # Set 'current_line' to 'word.text' instead of an empty string to ensure current word is included
                 current_line.text = word.text
             else:
                 current_line.text += word.text
@@ -59,6 +74,9 @@ class Text:
     
     
     def draw(self, draw, xy, fill):
+        """
+        Draw the text on .
+        """
         draw.text(
             xy,
             self.text,
