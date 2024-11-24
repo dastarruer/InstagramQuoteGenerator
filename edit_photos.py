@@ -22,14 +22,21 @@ class Text:
     
     def wrap_text(self, max_width):
         lines = []
-        current_line = Text("", self.font)
         words = self.text.split(" ")
         
+        # Stores the current line, and is appended to 'lines' once its width exceeds 'max_width'.
+        current_line = Text("", self.font)
+        
         for word in words:
+            # Store the current word as a Text object, adding a trailing space. Without the trailing space, the line 'Who am I?' would instead become 'WhoamI?'
             word = Text(word + " ", self.font)
             if word.width + current_line.width >= max_width:
+                # If 'line' was set to 'current_line', any changes made to 'current_line' would also be applied to 'line'. 
+                # So, we have to make an entirely new object.
                 line = Text(current_line.text, self.font)
                 lines.append(line)
+                
+                # Set 'current_line' to 'word.text' instead of an empty string because otherwise the current word would be skipped
                 current_line.text = word.text
             else:
                 current_line.text += word.text
