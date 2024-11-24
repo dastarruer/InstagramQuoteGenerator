@@ -7,10 +7,20 @@ class Text:
     def __init__(self, text: str, font: ImageFont):
         self.text = text
         self.font = font
-        
-        bbox = self.font.getbbox(text)
-        self.width = abs(bbox[0] - bbox[2])
-        self.height = abs(bbox[1] - bbox[3])
+    
+    
+    @property
+    def width(self):
+        bbox = self.font.getbbox(self.text)
+        width = abs(bbox[0] - bbox[2])
+        return width
+    
+    
+    @property
+    def height(self):
+        bbox = self.font.getbbox(self.text)
+        height = abs(bbox[0] - bbox[2])
+        return height
     
     
     def wrap_text(self, max_width):
@@ -18,7 +28,6 @@ class Text:
         current_line = Text("", self.font)
         words = self.text.split(" ")
         
-        # TODO: Figure out how to update Text class self.width/height every time self.text is updated
         for word in words:
             word = Text(word, self.font)
             if word.width + current_line.width >= max_width:
@@ -26,7 +35,6 @@ class Text:
                 current_line.text = ""
             else:
                 current_line.text += word.text + " "
-        print(lines)
         return lines
     
         
