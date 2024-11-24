@@ -8,7 +8,7 @@ from PIL import Image
 
 app = Flask(__name__)
 
-def generate_photo(filename):
+def generate_photo(filename, save_as):
     """
     Generate a photo by overlaying a quote onto an image sourced from Pexels, then save the edited image to 'filename'.
     """
@@ -18,16 +18,16 @@ def generate_photo(filename):
     author = random_quote[1]
     
     # Save a random iamge
-    photo_generator.get_pexels_image("1")
+    photo_generator.save_pexels_image(1)
     
     # Edit the photo
-    photo_editor = PhotoEditor(filename)
-    photo_editor.edit_photo(quote, author, filename)
+    photo_editor = PhotoEditor(filename, save_as)
+    photo_editor.edit_photo(quote, author)
 
 
 @app.route('/')
 def index():
-    # The filename the finished photo will be saved to
     filename = "static/image.JPEG"
-    generate_photo(filename)    
+    save_as = "static/edited_image.JPEG"
+    generate_photo(filename, save_as)    
     return render_template("index.html")
