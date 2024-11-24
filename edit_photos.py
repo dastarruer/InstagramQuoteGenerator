@@ -31,7 +31,7 @@ class Text:
             if word.width + current_line.width >= max_width:
                 line = Text(current_line.text, self.font)
                 lines.append(line)
-                current_line.text = ""
+                current_line.text = word.text
             else:
                 current_line.text += word.text
         # Reverse list to show the first lines at the top, and the last lines at the bottom
