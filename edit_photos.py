@@ -85,7 +85,19 @@ class Text:
     
     def draw(self, draw, xy, fill):
         """
-        Draw the text on .
+        Draw the text on an image at the specified location.
+
+        Args:
+            draw (ImageDraw.Draw): The drawing context to use for rendering the text.
+            xy (tuple): A tuple (x, y) that represents the top-left corner where the text will be drawn.
+            fill (tuple): A color value used to fill the text. This can be a tuple representing an RGBA or RGB color.
+
+        Returns:
+            None
+
+        Description:
+            This method uses the provided drawing context (`draw`) to render the text onto the image at the
+            specified position (`xy`). The text is drawn with the color specified in the `fill` argument, and the font defined for the Text object. The `xy` argument determines the starting point for the text, typically the top-left corner of the text.
         """
         draw.text(
             xy,
