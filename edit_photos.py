@@ -1,7 +1,6 @@
 from PIL import Image, ImageFont, ImageDraw
 
 
-filename = "static/image.JPEG"
 
 class Text:
     def __init__(self, text: str, font: ImageFont):
@@ -60,7 +59,8 @@ class Text:
 
 
 class PhotoEditor:
-    def __init__(self, filename):
+    def __init__(self, filename, save_as):
+        self.save_as = save_as
         self.photo = Image.open(filename)
         self.width, self.height = self.photo.size
         self.draw = ImageDraw.Draw(self.photo, "RGBA")
@@ -102,9 +102,10 @@ class PhotoEditor:
         
         quote_fill = (0, 0, 0)
         wrapped_quote_text = quote_text.wrap_text(rectangle_width)
-        for i, line in enumerate(wrapped_quote_text, start=1):
+        padding = 10
+        for i, line in enumerate(wrapped_quote_text):
             line_xy = line.get_center_coordinates(rectangle_width, rectangle_height)
-            line_xy[1] -= line.height * i
+            line_xy[1] -= line.height * i + padding
             line.draw(self.draw, line_xy, quote_fill)
                 
         author_font_size = 250
@@ -122,20 +123,22 @@ class PhotoEditor:
         author_text.draw(self.draw, author_xy, author_fill)
     
     
-    def save_photo(self, file):
+    def save_photo(self):
         """
         Save the photo.
         """
-        self.photo.save(file)
+        self.photo.save(self.save_as)
     
     
-    def edit_photo(self, quote, author, file):
+    def edit_photo(self, quote, author):
         """
         Execute both 'draw_rectangle()' and 'draw_quote()', and save the Image to 'file'.
         """
         self.draw_rectangle()
         self.draw_quote(quote, author)
-        self.save_photo(file)
+        self.save_photo()
 
-p = PhotoEditor(filename)
-p.edit_photo("Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is living with the results of other people's thinking.", "Steve Jobs", filename)
+filename = "static/image.JPEG"
+save_as = "static/edited_photo.JPEG"
+p = PhotoEditor(filename, save_as)
+p.edit_photo("Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is living with the results of other people's thinking.", "Steve Jobs")
