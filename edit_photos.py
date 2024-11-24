@@ -106,8 +106,9 @@ class PhotoEditor:
         wrapped_quote_text = quote_text.wrap_text(rectangle_width)
         padding = 10
         for i, line in enumerate(wrapped_quote_text):
+            middle = len(wrapped_quote_text) // 2
             line_xy = line.get_center_coordinates(rectangle_width, rectangle_height)
-            line_xy[1] -= line.height * i + padding
+            line_xy[1] -= line.height * (i - middle) + padding
             line.draw(self.draw, line_xy, quote_fill)
                 
         author_font_size = 250
