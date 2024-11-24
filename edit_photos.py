@@ -101,7 +101,7 @@ class PhotoEditor:
         quote_text = Text(quote, quote_font)
         
         quote_fill = (0, 0, 0)
-        wrapped_quote_text = quote_text.wrap_text(rectangle_width)[::-1]
+        wrapped_quote_text = quote_text.wrap_text(rectangle_width)
         for i, line in enumerate(wrapped_quote_text, start=1):
             line_xy = line.get_center_coordinates(rectangle_width, rectangle_height)
             line_xy[1] -= line.height * i
