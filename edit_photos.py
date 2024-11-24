@@ -1,7 +1,6 @@
 from PIL import Image, ImageFont, ImageDraw
 
 
-
 class Text:
     def __init__(self, text: str, font: ImageFont):
         self.text = text
