@@ -8,7 +8,6 @@ class PhotoGenerator:
         """
         Requests a random photo from the Pexels API.
         """
-
         # This header is used to send our API key to the API for verification
         headers = {
             "Authorization": PEXELS_KEY
@@ -49,7 +48,7 @@ class PhotoGenerator:
         photo = get(photo_url)
 
         # Save the image
-        filename = "static/image.JPEG"
+        filename = "static/images/image.JPEG"
         with open(filename, 'wb') as f:
             f.write(photo.content)
         print("Done!")
