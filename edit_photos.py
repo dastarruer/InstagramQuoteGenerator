@@ -104,22 +104,24 @@ class PhotoEditor:
         
         quote_fill = (0, 0, 0)
         wrapped_quote_text = quote_text.wrap_text(rectangle_width)
-        padding = 10
+        total_height = 0
+        padding = 20
         for i, line in enumerate(wrapped_quote_text):
-            middle = len(wrapped_quote_text) // 2
+            total_height += line.height
+            middle = len(wrapped_quote_text) // 3
             line_xy = line.get_center_coordinates(rectangle_width, rectangle_height)
-            line_xy[1] -= line.height * (i - middle) + padding
+            line_xy[1] -= line.height * (i - middle) + (padding * (i - middle))
             line.draw(self.draw, line_xy, quote_fill)
                 
         author_font_size = 250
         author_font = ImageFont.truetype("fonts/georgiai.ttf", author_font_size)
-        author_text = Text(author, author_font)
+        author_text = Text("- " + author, author_font)
 
         author_xy = author_text.get_center_coordinates(rectangle_width, rectangle_height)
         
         # Offset the author's y position by the quote's height and a bit of padding
-        padding = 10
-        author_xy[1] += quote_text.height + padding
+        padding = 30
+        author_xy[1] += quote_text.height * 3 + padding
 
         author_transparency = 150
         author_fill = (117, 128, 129, author_transparency)
