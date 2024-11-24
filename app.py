@@ -6,6 +6,9 @@ from flask import Flask, render_template
 from PIL import Image
 
 
+FILENAME = "static/image.JPEG"
+SAVE_AS = "static/edited_image.JPEG"
+
 app = Flask(__name__)
 
 def generate_photo(filename, save_as):
@@ -27,7 +30,5 @@ def generate_photo(filename, save_as):
 
 @app.route('/')
 def index():
-    filename = "static/image.JPEG"
-    save_as = "static/edited_image.JPEG"
-    generate_photo(filename, save_as)    
+    generate_photo(FILENAME, SAVE_AS)    
     return render_template("index.html")
