@@ -89,7 +89,7 @@ class PhotoEditor:
         )
         
     
-    def draw_quote(self, quote, quotee):
+    def draw_quote(self, quote, author):
         """
         Draw the quote on top of the photo. It is centered in relation to the transparent rectangle that can be drawn with 'draw_rectangle()'.
         """
@@ -107,19 +107,19 @@ class PhotoEditor:
             line_xy[1] -= line.height * i
             line.draw(self.draw, line_xy, quote_fill)
                 
-        quotee_font_size = 250
-        quotee_font = ImageFont.truetype("fonts/georgiai.ttf", quotee_font_size)
-        quotee_text = Text(quotee, quotee_font)
+        author_font_size = 250
+        author_font = ImageFont.truetype("fonts/georgiai.ttf", author_font_size)
+        author_text = Text(author, author_font)
 
-        quotee_xy = quotee_text.get_center_coordinates(rectangle_width, rectangle_height)
+        author_xy = author_text.get_center_coordinates(rectangle_width, rectangle_height)
         
-        # Offset the quotee's y position by the quote's height and a bit of padding
+        # Offset the author's y position by the quote's height and a bit of padding
         padding = 10
-        quotee_xy[1] += quote_text.height + padding
+        author_xy[1] += quote_text.height + padding
 
-        quotee_transparency = 150
-        quotee_fill = (117, 128, 129, quotee_transparency)
-        quotee_text.draw(self.draw, quotee_xy, quotee_fill)
+        author_transparency = 150
+        author_fill = (117, 128, 129, author_transparency)
+        author_text.draw(self.draw, author_xy, author_fill)
     
     
     def save_photo(self, file):
@@ -129,12 +129,12 @@ class PhotoEditor:
         self.photo.save(file)
     
     
-    def edit_photo(self, quote, quotee, file):
+    def edit_photo(self, quote, author, file):
         """
         Execute both 'draw_rectangle()' and 'draw_quote()', and save the Image to 'file'.
         """
         self.draw_rectangle()
-        self.draw_quote(quote, quotee)
+        self.draw_quote(quote, author)
         self.save_photo(file)
 
 p = PhotoEditor(filename)
