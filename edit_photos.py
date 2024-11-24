@@ -33,6 +33,9 @@ class Text:
                 current_line.text = word.text
             else:
                 current_line.text += word.text
+        # Append current_line, so that the last line does not get left out
+        lines.append(current_line)
+        
         # Reverse list to show the first lines at the top, and the last lines at the bottom
         return lines[::-1]
     
