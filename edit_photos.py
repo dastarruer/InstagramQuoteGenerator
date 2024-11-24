@@ -22,7 +22,6 @@ class Text:
         height = abs(bbox[1] - bbox[3])
         return height
     
-    # TODO: Figure out why each line in lines has such a large height value
     def wrap_text(self, max_width):
         lines = []
         current_line = Text("", self.font)
@@ -36,7 +35,8 @@ class Text:
                 current_line.text = ""
             else:
                 current_line.text += word.text
-        return lines
+        # Reverse list to show the first lines at the top, and the last lines at the bottom
+        return lines[::-1]
     
         
     def get_center_coordinates(self, bbox_width, bbox_height):
@@ -101,7 +101,7 @@ class PhotoEditor:
         quote_text = Text(quote, quote_font)
         
         quote_fill = (0, 0, 0)
-        wrapped_quote_text = quote_text.wrap_text(rectangle_width)
+        wrapped_quote_text = quote_text.wrap_text(rectangle_width)[::-1]
         for i, line in enumerate(wrapped_quote_text, start=1):
             line_xy = line.get_center_coordinates(rectangle_width, rectangle_height)
             line_xy[1] -= line.height * i
