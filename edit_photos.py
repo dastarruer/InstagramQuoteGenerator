@@ -19,7 +19,7 @@ class Text:
     @property
     def height(self):
         bbox = self.font.getbbox(self.text)
-        height = abs(bbox[0] - bbox[2])
+        height = abs(bbox[1] - bbox[3])
         return height
     
     # TODO: Figure out why each line in lines has such a large height value
@@ -104,7 +104,7 @@ class PhotoEditor:
         wrapped_quote_text = quote_text.wrap_text(rectangle_width)
         for i, line in enumerate(wrapped_quote_text, start=1):
             line_xy = line.get_center_coordinates(rectangle_width, rectangle_height)
-            line_xy[1] += line.height * i
+            line_xy[1] -= line.height * i
             line.draw(self.draw, line_xy, quote_fill)
                 
         quotee_font_size = 250
