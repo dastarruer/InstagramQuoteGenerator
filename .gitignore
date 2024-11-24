@@ -1,5 +1,4 @@
 __pycache__/
 .venv/
 api.py
-static/image.JPEG
-static/edited_image.JPEG
+static/images
