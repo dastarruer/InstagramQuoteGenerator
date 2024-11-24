@@ -144,6 +144,13 @@ class PhotoEditor:
     def draw_quote(self, quote, author):
         """
         Draw the quote on top of the photo. It is centered in relation to the transparent rectangle that can be drawn with 'draw_rectangle()'.
+        
+        Args:
+            quote (str): The quote to be drawn on the photo.
+            author (str): The author of the quote, which is drawn directly below the quote.
+
+        Returns:
+            None
         """
         rectangle_width = self.rectangle_x1 - self.rectangle_x0
         rectangle_height = self.rectangle_y1 - self.rectangle_y0
@@ -185,6 +192,13 @@ class PhotoEditor:
     def edit_photo(self, quote, author):
         """
         Execute both 'draw_rectangle()' and 'draw_quote()', and save the Image to 'file'.
+        
+        Args:
+            quote (str): The quote to be drawn on the photo.
+            author (str): The author of the quote, which is drawn directly below the quote.
+
+        Returns:
+            None
         """
         self.draw_rectangle()
         self.draw_quote(quote, author)
