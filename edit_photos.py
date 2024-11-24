@@ -2,9 +2,12 @@ from PIL import Image, ImageFont, ImageDraw
 
 
 class Text:
-    def __init__(self, text: str, font: ImageFont):
+    def __init__(self, text: str, font: ImageFont = None, font_path: str = None, font_size: int = None):
         self.text = text
         self.font = font
+        # If a font is not specified, use font_path and font_size as optional arguments to create the font
+        if not self.font:
+            self.font = ImageFont.truetype(font_path, font_size)
     
     
     @property
@@ -39,16 +42,16 @@ class Text:
         words = self.text.split(" ")
         
         # Stores the current line, and is appended to 'lines' once its width exceeds 'max_width'.
-        current_line = Text("", self.font)
+        current_line = Text("", font=self.font)
         
         for word in words:
             # Store the current word as a Text object, adding a trailing space
             # Without the trailing space, the line 'Who am I?' would instead become 'WhoamI?'
-            word = Text(word + " ", self.font)
+            word = Text(word + " ", font=self.font)
             if word.width + current_line.width >= max_width:
                 # If 'line' was set to 'current_line', any changes made to 'current_line' would also be applied to 'line'. 
                 # So, we have to make an entirely new object.
-                line = Text(current_line.text, self.font)
+                line = Text(current_line.text, font=self.font)
                 lines.append(line)
                 
                 # Set 'current_line' to 'word.text' instead of an empty string to ensure current word is included
@@ -146,8 +149,7 @@ class PhotoEditor:
         rectangle_height = self.rectangle_y1 - self.rectangle_y0
         
         quote_font_size = 250
-        quote_font = ImageFont.truetype("fonts/georgia.ttf", quote_font_size)
-        quote_text = Text(quote, quote_font)
+        quote_text = Text(quote, font_path="fonts/georgia.ttf", font_size=quote_font_size)
         
         quote_fill = (0, 0, 0)
         wrapped_quote_text = quote_text.wrap_text(rectangle_width)
@@ -160,8 +162,7 @@ class PhotoEditor:
             line.draw(self.draw, line_xy, quote_fill)
                 
         author_font_size = 250
-        author_font = ImageFont.truetype("fonts/georgiai.ttf", author_font_size)
-        author_text = Text("- " + author, author_font)
+        author_text = Text("- " + author, font_path="fonts/georgiai.ttf", font_size=author_font_size)
 
         author_xy = author_text.get_center_coordinates(rectangle_width, rectangle_height)
         
