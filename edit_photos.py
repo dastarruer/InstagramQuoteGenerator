@@ -213,14 +213,24 @@ class PhotoEditor:
         # Add a '-' to the beginning of the author to signify that they said the quote
         author = "- " + author
         
+        # Initialize the quote and author as Text objects
         quote_font_size = 250
         quote_text = Text(quote, font_path="fonts/georgia.ttf", font_size=quote_font_size)
         
+        author_font_size = 250
+        author_text = Text(author, font_path="fonts/georgiai.ttf", font_size=author_font_size)
+        
         vertical_padding = 50
         horizontal_padding = 50
-        quote_fill = (0, 0, 0)
         
+        quote_fill = (0, 0, 0)
+        author_transparency = 150
+        author_fill = (117, 128, 129, author_transparency)
+        
+        # Get the wrapped text
         wrapped_quote_text = quote_text.wrap_text(rectangle_width)
+        
+        # Draw the quote
         for i, line in enumerate(wrapped_quote_text):
             # Used to adjust the vertical offset of each line based on the line's position in the list
             line_offset = len(wrapped_quote_text) // 3
@@ -239,18 +249,24 @@ class PhotoEditor:
             line_xy = [actual_x, actual_y]
             line.draw(self.draw, line_xy, quote_fill)
                 
-        author_font_size = 250
-        author_text = Text(author, font_path="fonts/georgiai.ttf", font_size=author_font_size)
-
-        author_xy = author_text.get_center_coordinates(rectangle_width, rectangle_height)
+        # Get the wrapped text of the author
+        wrapped_author_text = author_text.wrap_text(rectangle_width)
         
-        # Offset the author's y position by the quote's height and a bit of padding
-        vertical_padding = 30
-        author_xy[1] += quote_text.height * 3 + vertical_padding
-
-        author_transparency = 150
-        author_fill = (117, 128, 129, author_transparency)
-        author_text.draw(self.draw, author_xy, author_fill)
+        # Draw the author
+        for i, line in enumerate(wrapped_author_text):
+            line_xy = line.get_center_coordinates(rectangle_width, rectangle_height)
+            
+            # Add padding between the left edge of the rectangle and text
+            actual_x = line_xy[0] + horizontal_padding
+            
+            # Set the y value of the line to the bottom of the quote
+            actual_y = line_xy[1] + quote_text.height * (3 - i) + 200
+            
+            # Add padding between each line of text
+            actual_y -= vertical_padding
+            
+            line_xy = [actual_x, actual_y]
+            line.draw(self.draw, line_xy, author_fill)
     
     
     def save_photo(self):
@@ -278,7 +294,7 @@ class PhotoEditor:
         self.draw_quote(quote, author)
         self.save_photo()
 
-filename = "static/image.JPEG"
-save_as = "static/edited_image.JPEG"
+filename = "static/images/image.JPEG"
+save_as = "static/images/edited_image.JPEG"
 p = PhotoEditor(filename, save_as)
-p.edit_photo("Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is living with the results of other people's thinking.", "Steve Jobs")
+p.edit_photo("Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is living with the results of other people's thinking.", "Steve Jobs afskldf jaldsf ajsdkf djf dkfj d jfd fjd fjd fdj fjd fdj fdj fd")
