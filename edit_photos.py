@@ -110,6 +110,7 @@ class PhotoEditor:
             total_height += line.height
             middle = len(wrapped_quote_text) // 3
             line_xy = line.get_center_coordinates(rectangle_width, rectangle_height)
+            line_xy[0] += 50
             line_xy[1] -= line.height * (i - middle) + (padding * (i - middle))
             line.draw(self.draw, line_xy, quote_fill)
                 
@@ -144,6 +145,6 @@ class PhotoEditor:
         self.save_photo()
 
 filename = "static/image.JPEG"
-save_as = "static/edited_photo.JPEG"
+save_as = "static/edited_image.JPEG"
 p = PhotoEditor(filename, save_as)
 p.edit_photo("Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is living with the results of other people's thinking.", "Steve Jobs")
