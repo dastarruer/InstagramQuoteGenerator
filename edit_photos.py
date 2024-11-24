@@ -29,12 +29,14 @@ class Text:
         words = self.text.split(" ")
         
         for word in words:
-            word = Text(word, self.font)
+            word = Text(word + " ", self.font)
             if word.width + current_line.width >= max_width:
-                lines.append(current_line)
+                line = Text(current_line.text, self.font)
+                lines.append(line)
                 current_line.text = ""
             else:
-                current_line.text += word.text + " "
+                current_line.text += word.text
+        print(line.text for line in lines)
         return lines
     
         
