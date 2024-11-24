@@ -104,10 +104,8 @@ class PhotoEditor:
         
         quote_fill = (0, 0, 0)
         wrapped_quote_text = quote_text.wrap_text(rectangle_width)
-        total_height = 0
         padding = 20
         for i, line in enumerate(wrapped_quote_text):
-            total_height += line.height
             middle = len(wrapped_quote_text) // 3
             line_xy = line.get_center_coordinates(rectangle_width, rectangle_height)
             line_xy[0] += 50
