@@ -158,14 +158,27 @@ class PhotoEditor:
         quote_font_size = 250
         quote_text = Text(quote, font_path="fonts/georgia.ttf", font_size=quote_font_size)
         
+        vertical_padding = 50
+        horizontal_padding = 50
         quote_fill = (0, 0, 0)
+        
         wrapped_quote_text = quote_text.wrap_text(rectangle_width)
-        padding = 20
         for i, line in enumerate(wrapped_quote_text):
-            middle = len(wrapped_quote_text) // 3
+            # Used to adjust the vertical offset of each line based on the line's position in the list
+            line_offset = len(wrapped_quote_text) // 3
+            
             line_xy = line.get_center_coordinates(rectangle_width, rectangle_height)
-            line_xy[0] += 50
-            line_xy[1] -= line.height * (i - middle) + (padding * (i - middle))
+            
+            # Add padding between the left edge of the rectangle and text
+            actual_x = line_xy[0] + horizontal_padding
+            
+            # Adjust the y value of the line based on its position in the list
+            actual_y = line_xy[1] - line.height * (i - line_offset)
+            
+            # Add padding between each line of text
+            actual_y -= vertical_padding * (i - line_offset)
+            
+            line_xy = [actual_x, actual_y]
             line.draw(self.draw, line_xy, quote_fill)
                 
         author_font_size = 250
@@ -174,8 +187,8 @@ class PhotoEditor:
         author_xy = author_text.get_center_coordinates(rectangle_width, rectangle_height)
         
         # Offset the author's y position by the quote's height and a bit of padding
-        padding = 30
-        author_xy[1] += quote_text.height * 3 + padding
+        vertical_padding = 30
+        author_xy[1] += quote_text.height * 3 + vertical_padding
 
         author_transparency = 150
         author_fill = (117, 128, 129, author_transparency)
