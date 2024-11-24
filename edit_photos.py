@@ -3,6 +3,18 @@ from PIL import Image, ImageFont, ImageDraw
 
 class Text:
     def __init__(self, text: str, font: ImageFont = None, font_path: str = None, font_size: int = None):
+        """
+        Initialize a Text object.
+
+        Args:
+            text (str): The text to be displayed.
+            font (ImageFont): The font of the text. If not specified, a font will be created using font_path and font_size.
+            font_path (str): The path to the font file. Only used if font is not specified.
+            font_size (int): The size of the font. Only used if font is not specified.
+
+        Returns:
+            None
+        """
         self.text = text
         self.font = font
         # If a font is not specified, use font_path and font_size as optional arguments to create the font
@@ -12,6 +24,15 @@ class Text:
     
     @property
     def width(self):
+        """
+        The width of the rendered text.
+
+        The width is calculated as the absolute difference between the x-coordinates of the
+        top-left and bottom-right corners of the text's bounding box.
+
+        Returns:
+            int: The width of the rendered text.
+        """
         bbox = self.font.getbbox(self.text)
         width = abs(bbox[0] - bbox[2])
         return width
@@ -19,6 +40,15 @@ class Text:
     
     @property
     def height(self):
+        """
+        The height of the rendered text.
+
+        The height is calculated as the absolute difference between the y-coordinates of the
+        top-left and bottom-right corners of the text's bounding box.
+
+        Returns:
+            int: The height of the rendered text.
+        """
         bbox = self.font.getbbox(self.text)
         height = abs(bbox[1] - bbox[3])
         return height
@@ -112,6 +142,27 @@ class Text:
 
 class PhotoEditor:
     def __init__(self, filename, save_as):
+        """
+        Initialize a PhotoEditor object.
+
+        Args:
+            filename (str): The filename of the image to be edited.
+            save_as (str): The filename to save the edited image as.
+
+        Attributes:
+            save_as (str): The filename to save the edited image as.
+            photo (Image): The image to be edited.
+            width (int): The width of the image.
+            height (int): The height of the image.
+            draw (ImageDraw.Draw): The drawing context used to edit the image.
+            rectangle_x0 (int): The x-coordinate of the top-left corner of the rectangle to be drawn over the image.
+            rectangle_x1 (int): The x-coordinate of the bottom-right corner of the rectangle to be drawn over the image.
+            rectangle_y0 (int): The y-coordinate of the top-left corner of the rectangle to be drawn over the image.
+            rectangle_y1 (int): The y-coordinate of the bottom-right corner of the rectangle to be drawn over the image.
+
+        Returns:
+            None
+        """
         self.save_as = save_as
         self.photo = Image.open(filename)
         self.width, self.height = self.photo.size
@@ -130,8 +181,12 @@ class PhotoEditor:
     
     def draw_rectangle(self):
         """
-        Draw a semi-transparent rectangle over the photo, similar to how quotes are displayed on Instagram. This effect mimics the style where stock photos are paired with a transparent rectangle, and text is written on top of it for better readability.
+        Draw a semi-transparent rectangle on the photo, starting at the top-left corner defined by (x0, y0) and ending at the bottom-right corner defined by (x1, y1). This allows for better readability of the text on the background. The fill color is white with some transparency, and the outline is a solid white line.
+        
+        Returns:
+            None
         """
+        
         xy = (self.rectangle_x0, self.rectangle_y0, self.rectangle_x1, self.rectangle_y1)
         transparency = 200
         self.draw.rectangle(
@@ -200,7 +255,10 @@ class PhotoEditor:
     
     def save_photo(self):
         """
-        Save the photo.
+        Save the edited photo to the path specified in 'self.save_as'.
+        
+        Returns:
+            None
         """
         self.photo.save(self.save_as)
     
