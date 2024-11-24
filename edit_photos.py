@@ -65,10 +65,20 @@ class Text:
     def get_center_coordinates(self, bbox_width, bbox_height):
         """
         Get the coordinates that would center the text in a given bounding box.
+        
+        This method takes `bbox_width` and `bbox_height`, and subtracts the width and height of the text respectively. This is then divided by 2, and floored, which returns the coordinates that would center the text inside of the bounding box.
+        
+        Args:
+            bbox_width (int): The width of the bounding box that the text is to be centered in.
+            bbox_height (int): The height of the bounding box that the text is to be centered in.
+
+        Returns:
+            center[center_x (int), center_y] (int): The coordinates that the text should be drawn at in order to center it inside of the bounding box. 
         """
         center_x = (bbox_width - self.width) // 2
         center_y = (bbox_height - self.height) // 2
         
+        # This is not a tuple, because these values usually need to be changed later on.
         center = [center_x, center_y]
         return center
     
