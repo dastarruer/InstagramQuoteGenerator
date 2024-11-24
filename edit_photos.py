@@ -169,14 +169,14 @@ class PhotoEditor:
         self.draw = ImageDraw.Draw(self.photo, "RGBA")
         
         # This is the offset of the rectangle that is drawn over the photo for better readability
-        rectangle_x_offset = 50
-        rectangle_y_offset = 100 
+        RECTANGLE_X_OFFSET = 50
+        RECTANGLE_Y_OFFSET = 100 
         
         # This is the rectangle 's xy coordinates
-        self.rectangle_x0 = rectangle_x_offset
-        self.rectangle_x1 = self.width - rectangle_x_offset
-        self.rectangle_y0 = rectangle_y_offset
-        self.rectangle_y1 = self.height - rectangle_y_offset
+        self.rectangle_x0 = RECTANGLE_X_OFFSET
+        self.rectangle_x1 = self.width - RECTANGLE_X_OFFSET
+        self.rectangle_y0 = RECTANGLE_Y_OFFSET
+        self.rectangle_y1 = self.height - RECTANGLE_Y_OFFSET
         
     
     def draw_rectangle(self):
@@ -207,8 +207,8 @@ class PhotoEditor:
         Returns:
             None
         """
-        rectangle_width = self.rectangle_x1 - self.rectangle_x0
-        rectangle_height = self.rectangle_y1 - self.rectangle_y0
+        RECTANGLE_WIDTH = self.rectangle_x1 - self.rectangle_x0
+        RECTANGLE_HEIGHT = self.rectangle_y1 - self.rectangle_y0
         
         # Add a '-' to the beginning of the author to signify that they said the quote
         author = "- " + author
@@ -220,50 +220,50 @@ class PhotoEditor:
         author_font_size = 250
         author_text = Text(author, font_path="fonts/georgiai.ttf", font_size=author_font_size)
         
-        vertical_padding = 50
-        horizontal_padding = 50
+        VERTICAL_PADDING = 50
+        HORIZONTAL_PADDING = 50
         
         quote_fill = (0, 0, 0)
         author_transparency = 150
         author_fill = (117, 128, 129, author_transparency)
         
         # Get the wrapped text
-        wrapped_quote_text = quote_text.wrap_text(rectangle_width)
+        wrapped_quote_text = quote_text.wrap_text(RECTANGLE_WIDTH)
         
         # Draw the quote
         for i, line in enumerate(wrapped_quote_text):
             # Used to adjust the vertical offset of each line based on the line's position in the list
             line_offset = len(wrapped_quote_text) // 3
             
-            line_xy = line.get_center_coordinates(rectangle_width, rectangle_height)
+            line_xy = line.get_center_coordinates(RECTANGLE_WIDTH, RECTANGLE_HEIGHT)
             
             # Add padding between the left edge of the rectangle and text
-            actual_x = line_xy[0] + horizontal_padding
+            actual_x = line_xy[0] + HORIZONTAL_PADDING
             
             # Adjust the y value of the line based on its position in the list
             actual_y = line_xy[1] - line.height * (i - line_offset)
             
             # Add padding between each line of text
-            actual_y -= vertical_padding * (i - line_offset)
+            actual_y -= VERTICAL_PADDING * (i - line_offset)
             
             line_xy = [actual_x, actual_y]
             line.draw(self.draw, line_xy, quote_fill)
                 
         # Get the wrapped text of the author
-        wrapped_author_text = author_text.wrap_text(rectangle_width)
+        wrapped_author_text = author_text.wrap_text(RECTANGLE_WIDTH)
         
         # Draw the author
         for i, line in enumerate(wrapped_author_text):
-            line_xy = line.get_center_coordinates(rectangle_width, rectangle_height)
+            line_xy = line.get_center_coordinates(RECTANGLE_WIDTH, RECTANGLE_HEIGHT)
             
             # Add padding between the left edge of the rectangle and text
-            actual_x = line_xy[0] + horizontal_padding
+            actual_x = line_xy[0] + HORIZONTAL_PADDING
             
             # Set the y value of the line to the bottom of the quote
             actual_y = line_xy[1] + quote_text.height * (3 - i) + 200
             
             # Add padding between each line of text
-            actual_y -= vertical_padding
+            actual_y -= VERTICAL_PADDING
             
             line_xy = [actual_x, actual_y]
             line.draw(self.draw, line_xy, author_fill)
@@ -294,7 +294,7 @@ class PhotoEditor:
         self.draw_quote(quote, author)
         self.save_photo()
 
-filename = "static/images/image.JPEG"
-save_as = "static/images/edited_image.JPEG"
-p = PhotoEditor(filename, save_as)
+FILENAME = "static/images/image.JPEG"
+SAVE_AS = "static/images/edited_image.JPEG"
+p = PhotoEditor(FILENAME, SAVE_AS)
 p.edit_photo("Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is living with the results of other people's thinking.", "Steve Jobs afskldf jaldsf ajsdkf djf dkfj d jfd fjd fjd fdj fjd fdj fdj fd")
