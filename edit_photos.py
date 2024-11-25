@@ -314,8 +314,3 @@ class PhotoEditor:
         self.draw_quote(quote)
         self.draw_author(author)
         self.save_photo()
-
-FILENAME = "static/images/image.JPEG"
-SAVE_AS = "static/images/edited_image.JPEG"
-p = PhotoEditor(FILENAME, SAVE_AS)
-p.edit_photo("Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is living with the results of other people's thinking.", "Steve Jobs")
