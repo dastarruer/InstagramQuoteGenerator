@@ -4,6 +4,11 @@
 
 {% block body %}
     <div class="flex">
-        <img src="static/images/edited_image.JPEG" alt="{{ quote }}" id="quote">
+        <div>
+            <img src="static/images/edited_image.JPEG" alt="{{ quote }}" id="quote">
+        </div>
+        <div>
+            <button onclick="window.location.reload()">New Quote</button>
+        </div>
     </div>
 {% endblock %}

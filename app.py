@@ -10,6 +10,7 @@ SAVE_AS = "static/images/edited_image.JPEG"
 
 app = Flask(__name__)
 
+
 def generate_photo(filename, save_as):
     """
     Generate a photo by overlaying a quote onto an image sourced from Pexels, then save the edited image to 'filename'.
