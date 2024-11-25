@@ -1,12 +1,14 @@
 #quote {
-    width: 400px;
+    width: 30rem;
     height: auto;
+    height: auto; 
 }
 
 .flex {
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; 
-    margin: 0; 
+    flex-direction: column;
+    margin: auto; 
 }
