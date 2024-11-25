@@ -1,5 +1,6 @@
-#new-quote {
+#new-quote, #create-quote {
     margin-left: 100px;
+    margin-bottom: 20px;
 }
 
 #quote {
