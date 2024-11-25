@@ -196,6 +196,17 @@ class PhotoEditor:
         )
         
     def draw_author(self, author):
+        """
+        Draw the author of the quote on the photo.
+        
+        The author is drawn centered horizontally and vertically on the rectangle drawn in 'draw_rectangle()', and is below the quote.
+        
+        Args:
+            author (str): The author of the quote.
+        
+        Returns:
+            None
+        """
         RECTANGLE_WIDTH = self.rectangle_x1 - self.rectangle_x0
         RECTANGLE_HEIGHT = self.rectangle_y1 - self.rectangle_y0
         
@@ -234,7 +245,7 @@ class PhotoEditor:
         
     def draw_quote(self, quote):
         """
-        Draw the quote on top of the photo. It is centered in relation to the transparent rectangle that can be drawn with 'draw_rectangle()'.
+        Draw the quote on top of the photo. It is centered horizontally and vertically on the rectangle drawn in 'draw_rectangle()'.
         
         Args:
             quote (str): The quote to be drawn on the photo.
