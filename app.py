@@ -5,8 +5,8 @@ from generate_quotes import quote_generator
 from flask import Flask, render_template
 
 
-FILENAME = "static/image.JPEG"
-SAVE_AS = "static/edited_image.JPEG"
+FILENAME = "static/images/image.JPEG"
+SAVE_AS = "static/images/edited_image.JPEG"
 
 app = Flask(__name__)
 
