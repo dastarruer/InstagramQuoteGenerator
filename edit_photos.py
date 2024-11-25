@@ -283,7 +283,7 @@ class PhotoEditor:
             actual_y = line_xy[1] - line.height * (i - line_offset)
             
             # Add padding between each line of text
-            actual_y -= VERTICAL_PADDING * (i - line_offset)
+            actual_y -= VERTICAL_PADDING * i
             
             line_xy = [actual_x, actual_y]
             line.draw(self.draw, line_xy, quote_fill)
