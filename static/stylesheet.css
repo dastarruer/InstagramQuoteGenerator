@@ -1,14 +1,24 @@
+#new-quote {
+    margin-left: 100px;
+}
+
 #quote {
     width: 30rem;
     height: auto;
     height: auto; 
 }
 
-.flex {
+.flex-horizontal {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.flex-vertical {
     flex-direction: column;
-    margin: auto; 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
