@@ -3,7 +3,6 @@ from generate_photos import photo_generator
 from generate_quotes import quote_generator
 
 from flask import Flask, render_template
-from PIL import Image
 
 
 FILENAME = "static/image.JPEG"
