@@ -195,8 +195,44 @@ class PhotoEditor:
             outline = (255, 255, 255), 
         )
         
-    
-    def draw_quote(self, quote, author):
+    def draw_author(self, author):
+        RECTANGLE_WIDTH = self.rectangle_x1 - self.rectangle_x0
+        RECTANGLE_HEIGHT = self.rectangle_y1 - self.rectangle_y0
+        
+        VERTICAL_PADDING = 50
+        HORIZONTAL_PADDING = 50
+        
+        # Add a '-' to the beginning of the author to signify that they said the quote
+        author = "- " + author
+        
+        # Create the author Text object
+        author_font_size = 250
+        author_text = Text(author, font_path="fonts/georgiai.ttf", font_size=author_font_size)
+        
+        
+        # Get the wrapped text of the author
+        wrapped_author_text = author_text.wrap_text(RECTANGLE_WIDTH)
+        
+        author_transparency = 150
+        author_fill = (117, 128, 129, author_transparency)
+        # Draw the author
+        for i, line in enumerate(wrapped_author_text):
+            line_xy = line.get_center_coordinates(RECTANGLE_WIDTH, RECTANGLE_HEIGHT)
+            
+            # Add padding between the left edge of the rectangle and text
+            actual_x = line_xy[0] + HORIZONTAL_PADDING
+            
+            # Set the y value of the line to the bottom of the quote
+            actual_y = line_xy[1] + self.quote_text.height * (3 - i) + 200
+            
+            # Add padding between each line of text
+            actual_y -= VERTICAL_PADDING
+            
+            line_xy = [actual_x, actual_y]
+            line.draw(self.draw, line_xy, author_fill)
+        
+        
+    def draw_quote(self, quote):
         """
         Draw the quote on top of the photo. It is centered in relation to the transparent rectangle that can be drawn with 'draw_rectangle()'.
         
@@ -210,25 +246,17 @@ class PhotoEditor:
         RECTANGLE_WIDTH = self.rectangle_x1 - self.rectangle_x0
         RECTANGLE_HEIGHT = self.rectangle_y1 - self.rectangle_y0
         
-        # Add a '-' to the beginning of the author to signify that they said the quote
-        author = "- " + author
-        
         # Initialize the quote and author as Text objects
         quote_font_size = 250
-        quote_text = Text(quote, font_path="fonts/georgia.ttf", font_size=quote_font_size)
-        
-        author_font_size = 250
-        author_text = Text(author, font_path="fonts/georgiai.ttf", font_size=author_font_size)
+        self.quote_text = Text(quote, font_path="fonts/georgia.ttf", font_size=quote_font_size)
         
         VERTICAL_PADDING = 50
         HORIZONTAL_PADDING = 50
         
         quote_fill = (0, 0, 0)
-        author_transparency = 150
-        author_fill = (117, 128, 129, author_transparency)
         
         # Get the wrapped text
-        wrapped_quote_text = quote_text.wrap_text(RECTANGLE_WIDTH)
+        wrapped_quote_text = self.quote_text.wrap_text(RECTANGLE_WIDTH)
         
         # Draw the quote
         for i, line in enumerate(wrapped_quote_text):
@@ -248,25 +276,6 @@ class PhotoEditor:
             
             line_xy = [actual_x, actual_y]
             line.draw(self.draw, line_xy, quote_fill)
-                
-        # Get the wrapped text of the author
-        wrapped_author_text = author_text.wrap_text(RECTANGLE_WIDTH)
-        
-        # Draw the author
-        for i, line in enumerate(wrapped_author_text):
-            line_xy = line.get_center_coordinates(RECTANGLE_WIDTH, RECTANGLE_HEIGHT)
-            
-            # Add padding between the left edge of the rectangle and text
-            actual_x = line_xy[0] + HORIZONTAL_PADDING
-            
-            # Set the y value of the line to the bottom of the quote
-            actual_y = line_xy[1] + quote_text.height * (3 - i) + 200
-            
-            # Add padding between each line of text
-            actual_y -= VERTICAL_PADDING
-            
-            line_xy = [actual_x, actual_y]
-            line.draw(self.draw, line_xy, author_fill)
     
     
     def save_photo(self):
@@ -291,10 +300,11 @@ class PhotoEditor:
             None
         """
         self.draw_rectangle()
-        self.draw_quote(quote, author)
+        self.draw_quote(quote)
+        self.draw_author(author)
         self.save_photo()
 
 FILENAME = "static/images/image.JPEG"
 SAVE_AS = "static/images/edited_image.JPEG"
 p = PhotoEditor(FILENAME, SAVE_AS)
-p.edit_photo("Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is living with the results of other people's thinking.", "Steve Jobs afskldf jaldsf ajsdkf djf dkfj d jfd fjd fjd fdj fjd fdj fdj fd")
+p.edit_photo("Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is living with the results of other people's thinking.", "Steve Jobs")
