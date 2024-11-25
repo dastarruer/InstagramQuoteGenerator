@@ -216,7 +216,6 @@ class PhotoEditor:
         # Add a '-' to the beginning of the author to signify that they said the quote
         author = "- " + author
         
-        # Create the author Text object
         author_font_size = 250
         author_text = Text(author, font_path="fonts/georgiai.ttf", font_size=author_font_size)
         
@@ -257,8 +256,9 @@ class PhotoEditor:
         RECTANGLE_WIDTH = self.rectangle_x1 - self.rectangle_x0
         RECTANGLE_HEIGHT = self.rectangle_y1 - self.rectangle_y0
         
-        # Initialize the quote and author as Text objects
         quote_font_size = 250
+        
+        # Since this object is accessed in 'draw_author()', it is set as an object variable.
         self.quote_text = Text(quote, font_path="fonts/georgia.ttf", font_size=quote_font_size)
         
         VERTICAL_PADDING = 50
