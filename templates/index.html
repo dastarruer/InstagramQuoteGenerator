@@ -3,13 +3,28 @@
 {% block title %}Quote Generator{% endblock %}
 
 {% block body %}
-    <div class="flex-horizontal">
+   <!-- The buttons to create random quotes -->
+    <div id="random-quote" class="flex-horizontal">
         <div>
             <img src="static/images/edited_image.JPEG" alt="{{ quote }}" id="quote">
         </div>
         <div class="flex-vertical">
             <button id="new-quote" onclick="window.location.reload()">New Quote</button>
-            <button id="create-quote">Or, create a quote...</button>
+            <button id="custom-quote-show">Or, create a quote...</button>
+        </div>
+    </div>
+    <!-- The form to create a custom quote -->
+    <div id="custom-quote" class="flex-vertical" hidden>
+        <div>
+            <form action="/" method="POST">
+                <label for="quote">Quote:</label>
+                <input name="quote">
+                <input name="author">
+                <button type="submit">Create Quote</button>
+            </form>
+        </div>
+        <div>
+            <button id="random-quote-show">Or, get a random quote...</button>
         </div>
     </div>
 {% endblock %}
