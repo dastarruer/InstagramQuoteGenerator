@@ -1,12 +1,13 @@
 const showCustomQuote = document.getElementById("custom-quote-show");
 const showRandomQuote = document.getElementById("random-quote-show");
 
-// When the 'custom-quote-show' button is pressed, hide the random quote and show the custom quote section
+// Toggle to the custom quote form
 showCustomQuote.addEventListener("click", (event) => {
     hideRandomQuoteDiv();
     showCustomQuoteDiv();
 });
 
+// Toggle to the random quote form
 showRandomQuote.addEventListener("click", (event) => {
     showRandomQuoteDiv();
     hideCustomQuoteDiv();
