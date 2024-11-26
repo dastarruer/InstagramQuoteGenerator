@@ -19,6 +19,7 @@ function hideCustomQuoteDiv() {
 }
 
 function hideRandomQuoteDiv() {
+    // Why can't I just hide the entire div? Who knows...
     const newQuote = document.getElementById("new-quote");
     newQuote.hidden = true;
     showCustomQuote.hidden = true;
@@ -30,6 +31,7 @@ function showCustomQuoteDiv() {
 }
 
 function showRandomQuoteDiv() {
+    // Why can't I just show the entire div? hell if i know...
     const newQuote = document.getElementById("new-quote");
     newQuote.hidden = false;
     showCustomQuote.hidden = false;
