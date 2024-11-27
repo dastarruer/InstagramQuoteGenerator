@@ -50,7 +50,7 @@ class PhotoEditor:
         """
         
         xy = (self.rectangle_x0, self.rectangle_y0, self.rectangle_x1, self.rectangle_y1)
-        transparency = 130
+        transparency = randint(100, 230)
         self.draw.rectangle(
             xy = xy, 
             fill = (255, 255, 255, transparency), 

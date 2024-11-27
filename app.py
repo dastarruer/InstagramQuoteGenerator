@@ -46,5 +46,5 @@ def index():
             author = "You, my friend."
         generate_custom_photo_quote(quote, author)
         return render_template("index.html", quote=quote)
-    generate_random_photo_quote(FILENAME, SAVE_AS)    
+    generate_random_photo_quote()    
     return render_template("index.html")
