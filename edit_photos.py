@@ -1,6 +1,7 @@
 from PIL import Image, ImageDraw
-from globals import FILENAME, SAVE_AS
+from random import randint
 
+from globals import FILENAME, SAVE_AS
 from text import Text
 
 class PhotoEditor:
@@ -9,8 +10,7 @@ class PhotoEditor:
         Initialize a PhotoEditor object.
 
         Args:
-            filename (str): The filename of the image to be edited.
-            save_as (str): The filename to save the edited image as.
+            None
 
         Attributes:
             save_as (str): The filename to save the edited image as.
@@ -50,7 +50,7 @@ class PhotoEditor:
         """
         
         xy = (self.rectangle_x0, self.rectangle_y0, self.rectangle_x1, self.rectangle_y1)
-        transparency = 200
+        transparency = 130
         self.draw.rectangle(
             xy = xy, 
             fill = (255, 255, 255, transparency), 
@@ -85,8 +85,7 @@ class PhotoEditor:
         # Get the wrapped text of the author
         wrapped_author_text = author_text.wrap_text(RECTANGLE_WIDTH)
         
-        author_transparency = 150
-        author_fill = (117, 128, 129, author_transparency)
+        author_fill = (0, 0, 0)
         # Draw the author
         for i, line in enumerate(wrapped_author_text):
             line_xy = line.get_center_coordinates(RECTANGLE_WIDTH, RECTANGLE_HEIGHT)
