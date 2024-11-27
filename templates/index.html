@@ -18,21 +18,21 @@
             <button id="custom-quote-show">Or, create a quote...</button>
         </div>
     <!-- The section for creating custom quotes -->
-         <div class="flex-vertical center" id="custom-quote">
-             <div>
-                 <form action="/" method="POST">
-                     <label for="quote">Quote:</label>
-                     <input name="quote" />
-                     <br>
-                     <label for="author">Author:</label>
-                     <input name="author" />
-                     <br>
-                     <button type="submit">Create Quote</button>
-                 </form>
-             </div>
-             <div>
-                 <button id="random-quote-show">Or, get a random quote...</button>
-             </div>
-         </div>
+        <div class="flex-vertical center" id="custom-quote">
+            <div>
+                <form id="custom-quote-form" action="/" method="POST">
+                    <label for="quote">Quote:</label>
+                    <input name="quote" />
+                    <br>
+                    <label for="author">Author:</label>
+                    <input name="author" />
+                    <br>
+                    <button type="submit">Create Quote</button>
+                </form>
+            </div>
+            <div>
+                <button id="random-quote-show">Or, get a random quote...</button>
+            </div>
+        </div>
     </div>
 {% endblock %}

@@ -9,18 +9,32 @@
     height: auto; 
 }
 
+#custom-quote {
+    height: 50px;
+    margin: 50px;
+}
+
+#custom-quote-form {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
 .center {
     justify-content: center;
     align-items: center;
 }
 
 .flex-horizontal {
-    height: 100vh;
+    justify-content: center;
+    align-items: center;
     display: flex;
+    height: 100vh;
 }
 
 .flex-vertical {
-    flex-direction: column;
-    height: 100vh;
+    justify-content: center;
+    align-items: center;
     display: flex;
+    height: 100vh;
+    flex-direction: column;
 }
