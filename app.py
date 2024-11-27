@@ -42,7 +42,13 @@ def index():
     if request.method == 'POST':
         quote = request.form['quote']
         author = request.form['author']
+        
+        # If the user does not input anything, put the error message in the photo (genius I know)
+        if not quote:
+            quote = "Hey! you forgot the quote"
+        if not author:
+            author = "You, my friend."
         generate_custom_photo_quote(quote, author, FILENAME, SAVE_AS)
-        return render_template("index.html")
+        return render_template("index.html", quote=quote)
     generate_random_photo_quote(FILENAME, SAVE_AS)    
-    return render_template("index.html")
+    return render_template("index.html", quote=quote)
