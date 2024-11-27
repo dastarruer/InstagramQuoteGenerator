@@ -142,7 +142,7 @@ class Text:
 
 
 class PhotoEditor:
-    def __init__(self, filename, save_as):
+    def __init__(self):
         """
         Initialize a PhotoEditor object.
 
@@ -164,8 +164,7 @@ class PhotoEditor:
         Returns:
             None
         """
-        self.save_as = save_as
-        self.photo = Image.open(filename)
+        self.photo = Image.open(FILENAME)
         self.width, self.height = self.photo.size
         self.draw = ImageDraw.Draw(self.photo, "RGBA")
         
@@ -292,12 +291,12 @@ class PhotoEditor:
     
     def save_photo(self):
         """
-        Save the edited photo to the path specified in 'self.save_as'.
+        Save the edited photo to the path specified in 'SAVE_AS'.
         
         Returns:
             None
         """
-        self.photo.save(self.save_as)
+        self.photo.save(SAVE_AS)
     
     
     def edit_photo(self, quote, author):

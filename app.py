@@ -7,16 +7,16 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-def generate_custom_photo_quote(quote, author, filename, save_as):
+def generate_custom_photo_quote(quote, author):
     # Save a random iamge from the Pexels API
     photo_generator.save_pexels_image(1)
     
     # Edit the photo and save it
-    photo_editor = PhotoEditor(filename, save_as)
+    photo_editor = PhotoEditor()
     photo_editor.edit_photo(quote, author)
 
 
-def generate_random_photo_quote(filename, save_as):
+def generate_random_photo_quote():
     """
     Generate a photo by overlaying a random quote from the API Ninjas Quote API onto an image sourced from the Pexels API, then save the edited image to 'filename'.
     """
@@ -29,7 +29,7 @@ def generate_random_photo_quote(filename, save_as):
     photo_generator.save_pexels_image(1)
     
     # Edit the photo and save it
-    photo_editor = PhotoEditor(filename, save_as)
+    photo_editor = PhotoEditor()
     photo_editor.edit_photo(quote, author)
 
 
@@ -44,7 +44,7 @@ def index():
             quote = "Hey! you forgot the quote"
         if not author:
             author = "You, my friend."
-        generate_custom_photo_quote(quote, author, FILENAME, SAVE_AS)
+        generate_custom_photo_quote(quote, author)
         return render_template("index.html", quote=quote)
     generate_random_photo_quote(FILENAME, SAVE_AS)    
     return render_template("index.html")
