@@ -78,9 +78,8 @@ class PhotoEditor:
         # Add a '-' to the beginning of the author to signify that they said the quote
         author = "- " + author
         
-        author_font_size = 250
+        author_font_size = randint(170, 250)
         author_text = Text(author, font_path="fonts/georgiai.ttf", font_size=author_font_size)
-        
         
         # Get the wrapped text of the author
         wrapped_author_text = author_text.wrap_text(RECTANGLE_WIDTH)
