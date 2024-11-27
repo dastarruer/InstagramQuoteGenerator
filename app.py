@@ -11,7 +11,7 @@ SAVE_AS = "static/images/edited_image.JPEG"
 app = Flask(__name__)
 
 
-def generate_photo(filename, save_as):
+def generate_random_photo_quote(filename, save_as):
     """
     Generate a photo by overlaying a quote onto an image sourced from Pexels, then save the edited image to 'filename'.
     """
@@ -35,5 +35,5 @@ def index():
         author = request.form['author']
         return render_template("index.html")
         
-    generate_photo(FILENAME, SAVE_AS)    
+    generate_random_photo_quote(FILENAME, SAVE_AS)    
     return render_template("index.html")
