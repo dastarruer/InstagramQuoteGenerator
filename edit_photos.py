@@ -140,6 +140,7 @@ class Text:
         )
 
 
+# TODO: Randomize aspects of the output photo
 class PhotoEditor:
     def __init__(self, filename, save_as):
         """

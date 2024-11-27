@@ -1,9 +1,10 @@
-from api import API_NINJAS_KEY
+from globals import API_NINJAS_KEY
 
 from requests import get, codes
 
 
 class QuoteGenerator:
+    # TODO: Randomize the category
     def generate_quote(self, category) -> tuple[str, str]:
         """
         Returns a tuple with a random quote and its respective author.
