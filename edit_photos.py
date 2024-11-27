@@ -1,3 +1,5 @@
+from globals import FILENAME, SAVE_AS
+
 from PIL import Image, ImageFont, ImageDraw
 
 
@@ -314,3 +316,4 @@ class PhotoEditor:
         self.draw_quote(quote)
         self.draw_author(author)
         self.save_photo()
+photo_editor = PhotoEditor(FILENAME, SAVE_AS)
