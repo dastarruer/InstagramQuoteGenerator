@@ -2,7 +2,7 @@
 {% block title %}Quote Generator{% endblock %}
 
 {%block body %}
-    <div class="flex-horizontal center">
+    <div class="flex-horizontal">
         <div>
             <img
                 src="static/images/edited_image.JPEG"
@@ -11,19 +11,22 @@
             />
         </div>
     <!-- The section for creating random quotes -->
-        <div class="flex-vertical center" id="random-quote">
+        <div class="flex-vertical" id="random-quote">
             <button id="new-quote" onclick="window.location.reload()">
                 New Quote
             </button>
             <button id="custom-quote-show">Or, create a quote...</button>
         </div>
     <!-- The section for creating custom quotes -->
-         <div id="custom-quote" class="flex-vertical center">
+         <div class="flex-vertical center" id="custom-quote">
              <div>
                  <form action="/" method="POST">
                      <label for="quote">Quote:</label>
                      <input name="quote" />
+                     <br>
+                     <label for="author">Author:</label>
                      <input name="author" />
+                     <br>
                      <button type="submit">Create Quote</button>
                  </form>
              </div>
