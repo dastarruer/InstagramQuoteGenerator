@@ -116,7 +116,7 @@ class PhotoEditor:
         RECTANGLE_WIDTH = self.rectangle_x1 - self.rectangle_x0
         RECTANGLE_HEIGHT = self.rectangle_y1 - self.rectangle_y0
         
-        quote_font_size = 250
+        quote_font_size = randint(250, 300)
         
         # Since this object is accessed in 'draw_author()', it is set as an object variable.
         self.quote_text = Text(quote, font_path="fonts/georgia.ttf", font_size=quote_font_size)
