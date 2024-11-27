@@ -1,15 +1,11 @@
 from edit_photos import PhotoEditor
 from generate_photos import photo_generator
 from generate_quotes import quote_generator
+from globals import FILENAME, SAVE_AS
 
 from flask import Flask, render_template, request
 
-
-FILENAME = "static/images/image.JPEG"
-SAVE_AS = "static/images/edited_image.JPEG"
-
 app = Flask(__name__)
-
 
 def generate_custom_photo_quote(quote, author, filename, save_as):
     # Save a random iamge from the Pexels API
