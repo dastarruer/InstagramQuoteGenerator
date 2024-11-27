@@ -11,7 +11,7 @@ SAVE_AS = "static/images/edited_image.JPEG"
 app = Flask(__name__)
 
 
-def generate_custom_photo_quote(quote, author, filename, save_as):
+def generate_custom_photo(quote, author, filename, save_as):
     # Save a random iamge from the Pexels API
     photo_generator.save_pexels_image(1)
     
@@ -20,7 +20,7 @@ def generate_custom_photo_quote(quote, author, filename, save_as):
     photo_editor.edit_photo(quote, author)
 
 
-def generate_random_photo_quote(filename, save_as):
+def generate_random_photo(filename, save_as):
     """
     Generate a photo by overlaying a random quote from the API Ninjas Quote API onto an image sourced from the Pexels API, then save the edited image to 'filename'.
     """
@@ -48,7 +48,7 @@ def index():
             quote = "Hey! you forgot the quote"
         if not author:
             author = "You, my friend."
-        generate_custom_photo_quote(quote, author, FILENAME, SAVE_AS)
+        generate_custom_photo(quote, author, FILENAME, SAVE_AS)
         return render_template("index.html", quote=quote)
-    generate_random_photo_quote(FILENAME, SAVE_AS)    
+    generate_random_photo(FILENAME, SAVE_AS)    
     return render_template("index.html", quote=quote)
