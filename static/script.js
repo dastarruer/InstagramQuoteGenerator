@@ -6,6 +6,10 @@ const randomQuoteShowBtn = document.getElementById("random-quote-show");
 // Hide the custom quote div when the page loads
 customQuoteDiv.style.display = "none";
 
+if (window.history.replaceState) {
+    // Prevent resubmission on reload
+    window.history.replaceState(null, null, window.location.href);
+}
 // Toggle the custom quote div 
 customQuoteShowBtn.addEventListener("click", () => {
     customQuoteDiv.style.display = "block"; // Show custom-quote
