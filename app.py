@@ -2,7 +2,7 @@ from edit_photos import PhotoEditor
 from generate_photos import photo_generator
 from generate_quotes import quote_generator
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 
 FILENAME = "static/images/image.JPEG"
@@ -28,7 +28,12 @@ def generate_photo(filename, save_as):
     photo_editor.edit_photo(quote, author)
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
+    if request.method == 'POST':
+        quote = request.form['quote']
+        author = request.form['author']
+        return render_template("index.html")
+        
     generate_photo(FILENAME, SAVE_AS)    
     return render_template("index.html")
