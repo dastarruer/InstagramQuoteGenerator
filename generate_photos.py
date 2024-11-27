@@ -1,4 +1,4 @@
-from api import PEXELS_KEY
+from globals import PEXELS_KEY
 
 from random import choice
 from requests import get
