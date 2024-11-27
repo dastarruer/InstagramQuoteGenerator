@@ -1,42 +1,19 @@
-const showCustomQuote = document.getElementById("custom-quote-show");
-const showRandomQuote = document.getElementById("random-quote-show");
+const customQuoteDiv = document.getElementById("custom-quote");
+const randomQuoteDiv = document.getElementById("random-quote");
+const customQuoteShowBtn = document.getElementById("custom-quote-show");
+const randomQuoteShowBtn = document.getElementById("random-quote-show");
 
-// Hide and show the divs when the page loads
-hideCustomQuoteDiv()
-showRandomQuoteDiv()
+// Hide the custom quote div when the page loads
+customQuoteDiv.style.display = "none";
 
-// Toggle to the custom quote form
-showCustomQuote.addEventListener("click", (event) => {
-    hideRandomQuoteDiv();
-    showCustomQuoteDiv();
+// Toggle the custom quote div 
+customQuoteShowBtn.addEventListener("click", () => {
+    customQuoteDiv.style.display = "block"; // Show custom-quote
+    randomQuoteDiv.style.display = "none"; // Hide random-quote
 });
 
-// Toggle to the random quote form
-showRandomQuote.addEventListener("click", (event) => {
-    showRandomQuoteDiv();
-    hideCustomQuoteDiv();
+// Toggle the random quote div
+randomQuoteShowBtn.addEventListener("click", () => {
+    customQuoteDiv.style.display = "none"; // Hide custom-quote
+    randomQuoteDiv.style.display = "flex"; // Show random-quote
 });
-
-function hideCustomQuoteDiv() {
-    const customQuote = document.getElementById("custom-quote");
-    customQuote.style.display = "none";
-}
-
-function hideRandomQuoteDiv() {
-    // Why can't I just hide the entire div? Who knows...
-    const newQuote = document.getElementById("new-quote");
-    newQuote.style.display = "none";
-    showCustomQuote.style.display = "none";
-}
-
-function showCustomQuoteDiv() {
-    const customQuote = document.getElementById("custom-quote");
-    customQuote.style.display = "block";
-}
-
-function showRandomQuoteDiv() {
-    // Why can't I just show the entire div? hell if i know...
-    const newQuote = document.getElementById("new-quote");
-    newQuote.style.display = "block";
-    showCustomQuote.style.display = "block";
-}
