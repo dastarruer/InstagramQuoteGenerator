@@ -1,4 +1,5 @@
 from PIL import Image, ImageFont, ImageDraw
+from globals import FILENAME, SAVE_AS
 
 
 class Text:

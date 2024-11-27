@@ -1,4 +1,4 @@
-from api import PEXELS_KEY
+from globals import PEXELS_KEY, FILENAME
 
 from random import choice
 from requests import get
@@ -48,8 +48,7 @@ class PhotoGenerator:
         photo = get(photo_url)
 
         # Save the image
-        filename = "static/images/image.JPEG"
-        with open(filename, 'wb') as f:
+        with open(FILENAME, 'wb') as f:
             f.write(photo.content)
         print("Done!")
 

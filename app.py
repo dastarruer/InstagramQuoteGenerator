@@ -51,4 +51,4 @@ def index():
         generate_custom_photo_quote(quote, author, FILENAME, SAVE_AS)
         return render_template("index.html", quote=quote)
     generate_random_photo_quote(FILENAME, SAVE_AS)    
-    return render_template("index.html", quote=quote)
+    return render_template("index.html")

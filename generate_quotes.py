@@ -1,4 +1,4 @@
-from api import API_NINJAS_KEY
+from globals import API_NINJAS_KEY
 
 from requests import get, codes
 
