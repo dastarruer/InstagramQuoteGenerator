@@ -1,3 +1,4 @@
+
 from PIL import Image, ImageDraw
 from random import randint
 
