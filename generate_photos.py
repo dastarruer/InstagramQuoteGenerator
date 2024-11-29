@@ -26,11 +26,8 @@ class PhotoGenerator:
             "per_page": num_of_photos
         }
 
-        print(f"Searching for '{params["query"]}'...")
-
         # Get the JSON response from the API
         response = get("https://api.pexels.com/v1/search", headers=headers, params=params).json()
-        print(f"Width: {response["photos"][0]["width"]} Height: {response["photos"][0]["height"]}")
         return response
     
 
@@ -50,6 +47,5 @@ class PhotoGenerator:
         # Save the image
         with open(FILENAME, 'wb') as f:
             f.write(photo.content)
-        print("Done!")
 
 photo_generator = PhotoGenerator()
