@@ -31,14 +31,14 @@ class PhotoEditor:
         self.draw = ImageDraw.Draw(self.photo, "RGBA")
         
         # This is the offset of the rectangle that is drawn over the photo for better readability
-        RECTANGLE_X_OFFSET = 50
-        RECTANGLE_Y_OFFSET = 100 
+        rectangle_x_offset = randint(50, 150)
+        rectangle_y_offset = randint(100, 250) 
         
         # This is the rectangle 's xy coordinates
-        self.rectangle_x0 = RECTANGLE_X_OFFSET
-        self.rectangle_x1 = self.width - RECTANGLE_X_OFFSET
-        self.rectangle_y0 = RECTANGLE_Y_OFFSET
-        self.rectangle_y1 = self.height - RECTANGLE_Y_OFFSET
+        self.rectangle_x0 = rectangle_x_offset
+        self.rectangle_x1 = self.width - rectangle_x_offset
+        self.rectangle_y0 = rectangle_y_offset
+        self.rectangle_y1 = self.height - rectangle_y_offset
         
     
     def draw_rectangle(self):
