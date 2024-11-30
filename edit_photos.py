@@ -1,6 +1,8 @@
+from glob import glob
+from os import listdir
 
 from PIL import Image, ImageDraw
-from random import randint
+from random import choice, randint
 
 from globals import FILENAME, SAVE_AS
 from text import Text
@@ -79,8 +81,11 @@ class PhotoEditor:
         # Add a '-' to the beginning of the author to signify that they said the quote
         author = "- " + author
         
-        author_font_size = randint(170, 250)
-        author_text = Text(author, font_path="fonts/georgiai.ttf", font_size=author_font_size)
+        font_dir = "./fonts/comorant"
+        font = choice(listdir("./fonts/comorant"))
+        print(font)
+        author_font_size = 170
+        author_text = Text(author, font_path=f"{font_dir}/{font}", font_size=author_font_size)
         
         # Get the wrapped text of the author
         wrapped_author_text = author_text.wrap_text(RECTANGLE_WIDTH)
@@ -120,7 +125,7 @@ class PhotoEditor:
         quote_font_size = randint(250, 300)
         
         # Since this object is accessed in 'draw_author()', it is set as an object variable.
-        self.quote_text = Text(quote, font_path="fonts/georgia.ttf", font_size=quote_font_size)
+        self.quote_text = Text(quote, font_path="fonts/georgia/georgia.ttf", font_size=quote_font_size)
         
         VERTICAL_PADDING = 50
         HORIZONTAL_PADDING = 50
