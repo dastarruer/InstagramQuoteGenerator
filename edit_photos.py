@@ -1,6 +1,5 @@
 from glob import glob
-from os import listdir
-
+import os
 from PIL import Image, ImageDraw
 from random import choice, randint
 
@@ -81,11 +80,10 @@ class PhotoEditor:
         # Add a '-' to the beginning of the author to signify that they said the quote
         author = "- " + author
         
-        font_dir = "./fonts/comorant"
-        font = choice(listdir("./fonts/comorant"))
-        print(font)
+        font_dir = choice([d for d in os.listdir("./fonts") if os.path.isdir(os.path.join("./fonts", d))])
+        font_path = choice([f for f in os.listdir(f"./fonts/{font_dir}") if f.endswith(('.ttf', '.otf'))])        
         author_font_size = 170
-        author_text = Text(author, font_path=f"{font_dir}/{font}", font_size=author_font_size)
+        author_text = Text(author, font_path=os.path.join("./fonts", font_dir, font_path), font_size=author_font_size)
         
         # Get the wrapped text of the author
         wrapped_author_text = author_text.wrap_text(RECTANGLE_WIDTH)
@@ -180,3 +178,5 @@ class PhotoEditor:
         self.draw_quote(quote)
         self.draw_author(author)
         self.save_photo()
+p = PhotoEditor()
+p.edit_photo("jfasdl", "ajsfkl")
